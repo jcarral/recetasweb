@@ -1,1 +1,195 @@
+vendor-prefixes ?= webkit moz official
+@import 'nib'
 
+@import url(http://openfontlibrary.org/face/grupo3)
+
+//Variables
+cBody = #829292;
+cHeader = #394141;
+cNav = #131c1c;
+cNavHover = rgba(#1b2626, 0.88);
+cBlue1 = #387070;
+
+body
+  display flex
+  flex-direction column
+  align-items center
+  margin 0
+  padding 0
+  background cBody
+
+.top
+  background cHeader
+  width 100%
+  height 70px
+  display flex
+  justify-content space-around
+  align-items center
+  box-shadow 5px 0 5px 0px cNav
+  h1
+    color white
+    font-family 'GRUPO3'
+  &-titulo
+    display flex
+    align-items center
+    *
+      padding 5px
+  form
+    input
+      height 30px
+      &[type="submit"]
+        background cBlue1
+        color white
+        font-family 'GRUPO3'
+        cursor pointer
+        width 100px
+        margin -4px
+      &[type="text"]
+        width 250px
+        box-sizing border-box
+        &:hover,:active
+          box-shadow 3px 3px 5px 0 cBlue1, -3px -3px 5px 0 cBlue1
+
+
+nav
+  width 80%
+  height 50px
+  background cNav
+  border-bottom 2px solid cBlue1
+  color white
+  font-family 'GRUPO3'
+  margin-top 10px
+  padding 0
+  display flex
+  align-items center
+  margin-bottom 10px
+  ul
+    display flex
+    flex-direction row
+    justify-content space-around
+    align-items center
+    padding 0
+    margin 0
+    width 100%
+    li
+      width 100%
+      height 50px
+      line-height 50px
+      text-align center
+      &:first-child:hover
+        background cNav
+      &:hover
+        background cNavHover
+        color cBlue1
+li
+  list-style-type none
+
+.container
+  background white
+  box-shadow 3px 3px 5px 0 rgba(23, 23, 23, 0.69)black, -3px -3px 5px 0 rgba(23, 23, 23, 0.69)
+
+.datos
+  display flex
+  justify-content space-around
+  margin-top 10px
+  h1
+    font-family 'GRUPO3'
+    font-size 32px
+  &-img
+    flex-grow 2
+  &-receta
+    flex-grow 8
+    border 1px solid red
+    display flex
+    flex-direction column
+    align-items flex-end
+    padding-right 20px
+    ul
+      li
+        font-family 'Robot'
+.image-frame
+  box-shadow 0 1px 2px rgba(#1f2933,.5)
+  padding 5px
+  margin 10px
+
+.tags
+  margin 0px
+  padding 0px
+  list-style none
+  a
+    margin-left 20px
+    padding 0px 10px 0px 12px
+    background-color lightSlateGray
+    color #fff
+    text-decoration none
+    border-bottom-right-radius 4px
+    border-top-right-radius 4px
+    &:before
+      content ""
+      float left
+      position absolute
+      top 0px
+      left -12px
+      width 0
+      height 0
+      border-color transparent lightSlateGray transparent transparent
+      border-style solid
+      border-width 12px 12px 12px 0px
+    &:after
+      content ""
+      position absolute
+      top 10px
+      left 0px
+      float left
+      width 4px
+      height 4px
+      border-radius 2px
+      background #fff
+      box-shadow -1px -1px 2px #333
+    &:hover
+      background #555
+      &:before
+        border-color transparent #555 transparent transparent
+
+.tags li, .tags a
+  float left
+  height 24px
+  line-height 24px
+  position relative
+  font-size 11px
+
+
+
+footer
+  width 100%
+  height 50px
+  margin-top 10px
+  background cNav
+
+input
+    border none
+    padding-left 5px
+
+  &::-webkit-input-placeholder
+    color #aaaaaa
+    position relative
+    padding 0
+    transition padding-top .8s ease
+  &:hover::-webkit-input-placeholder
+    padding-top 3em
+
+  &::-moz-placeholder
+    color #aaaaaa
+    position relative
+    padding 0
+    transition padding-top .8s ease
+  &:hover::-moz-placeholder
+    padding-top 3em
+
+  &:-ms-input-placeholder
+    color #aaaaaa
+    position relative
+    padding 0
+    transition padding-top .8s ease
+  &:hover:-ms-input-placeholder
+    padding-top 3em
