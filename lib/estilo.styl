@@ -2,6 +2,7 @@ vendor-prefixes ?= webkit moz official
 @import 'nib'
 
 @import url(http://openfontlibrary.org/face/grupo3)
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700)
 
 //Variables
 cBody = #829292;
@@ -9,7 +10,8 @@ cHeader = #394141;
 cNav = #131c1c;
 cNavHover = rgba(#1b2626, 0.88);
 cBlue1 = #387070;
-
+*
+  font-family 'Lato'
 body
   display flex
   flex-direction column
@@ -76,6 +78,8 @@ nav
       height 50px
       line-height 50px
       text-align center
+      img
+        padding-top 10px
       &:first-child:hover
         background cNav
       &:hover
@@ -87,31 +91,52 @@ li
 .container
   background white
   box-shadow 3px 3px 5px 0 rgba(23, 23, 23, 0.69)black, -3px -3px 5px 0 rgba(23, 23, 23, 0.69)
+  max-width 80%
 
 .datos
   display flex
-  justify-content space-around
+  justify-content flex-start
   margin-top 10px
-  h1
-    font-family 'GRUPO3'
-    font-size 32px
+
   &-img
-    flex-grow 2
+    margin 0
   &-receta
-    flex-grow 8
-    border 1px solid red
     display flex
     flex-direction column
-    align-items flex-end
+    justify-content space-around
+    align-items flex-start
     padding-right 20px
-    ul
-      li
-        font-family 'Robot'
+    margin-left 50px
+    &-ingredientes
+      padding-left 0
+      margin-left 10px
+
+    h1
+      font-family 'GRUPO3'
+      font-size 32px
+      margin 0
+
 .image-frame
   box-shadow 0 1px 2px rgba(#1f2933,.5)
   padding 5px
   margin 10px
 
+.receta
+  &-info
+    border-bottom 2px solid cBlue1
+    margin 10px
+    display flex
+    justify-content flex-start
+    ul
+      li
+        display inline
+        margin 0 10px
+        font-weight bold
+        font-family 'Lato'
+        color cBlue1
+
+  &-preparacion
+    padding 10px 10px 50px 10px
 .tags
   margin 0px
   padding 0px
