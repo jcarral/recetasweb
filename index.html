@@ -6,6 +6,7 @@
     <link rel="icon" type="image/png" href="./images/icon.png" />
     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
   </head>
   <body>
     <header>
@@ -15,8 +16,9 @@
           <h1>Recetas Universitarias</h1>
         </div>
         <div class="top-icons">
-          <img src="./images/addnew.png" alt="" height="50px" width="50px">
-          <img src="./images/search.png" alt="" height="50px" width="50px">
+          <a href="#" data-texto="Añadir nueva receta" class="button-hover">Añadir nueva receta</a>
+          <a href="#" data-texto="Buscar" class="button-hover">Buscar</a>
+
         </div>
       </div>
     </header>
@@ -33,11 +35,12 @@
         <h1 class="receta-titulo">CANELONES DE MIERDA Y CARNE HUMANA</h1>
         <p class="receta-subtitulo">Canelones hechos de mierda y carne humana</p>
         <div class="receta-info">
-          <div class="receta-info-tiempo">15"</div>
-          <div class="receta-info-cal">176</div>
+          <div class="receta-info-chef"><p>Karlos Arguiñano</p></div>
+          <div class="receta-info-tiempo">5'</div>
+          <div class="receta-info-cal">104</div>
         </div>
         <div class="recetas-ingredientes">
-          <div class="receta-ingredientes-titulo encabezado">Ingredientes</div>
+          <div class="titulo encabezado"><i class="icono icono-ingredientes"></i><p>Ingredientes</p></div>
           <ul>
             <li>Canelones</li>
             <li>Mierda</li>
@@ -48,7 +51,7 @@
           </ul>
         </div>
         <div class="receta-preparacion">
-          <div class="encabezado">Preparacion</div>
+          <div class="encabezado"><i class="icono icono-cooking"></i><p>Preparacion</p></div>
           <div class="receta-preparacion-contenido">
             <img src="./images/receta.jpg" alt="">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam cum harum quibusdam minus esse labore assumenda quo laudantium nisi reiciendis, dolores sunt non error dolore, perspiciatis architecto iusto commodi ducimus!</p>
@@ -60,10 +63,39 @@
         </div>
       </section>
       <section class="recomendaciones caja">
-        <div class="encabezado">Sugerencias</div>
-        <div class="recomendaciones-sugerencias"></div>
+        <div class="encabezado"><i class="icono icono-suggest"></i><p>Sugerencias</p></div>
+        <div class="recomendaciones-sugerencias">
+          <ul>
+            <li class=""><img src="./images/sugerencia.jpg" alt="" height="150px" width="200px"/></li>
+            <li><img src="./images/sugerencia.jpg" alt="" height="150px" width="200px"/></li>
+            <li><img src="./images/sugerencia.jpg" alt="" height="150px" width="200px"/></li>
+            <li><img src="./images/sugerencia.jpg" alt="" height="150px" width="200px"/></li>
+          </ul>
+      </div>
       </section>
+      <section class="comentarios caja">
+        <div class="encabezado"><i class="icono icono-chat"></i><p>Comentarios</p></div>
+        <form action="#" method="Post" class="comentarios-nuevo">
+          <div data-comentarios="datos">
+            <input type="text" placeholder="Usuario">
+            <input type="email" placeholder="Correo electrónico">
+          </div>
+          <textarea rows="10" cols="50" placeholder="Introduce un nuevo comentario"></textarea>
+          <input type="submit" data-texto="Enviar" class="button-hover">
+        </form>
+        <ul>
+          <li class="comentario"></li>
+          <li class="comentario"></li>
+          <li class="comentario"></li>
+          <li class="comentario"></li>
+          <li class="comentario"></li>
+        </ul>
+      </section>
+
     </main>
+    <footer>
+      SAR 2015-2016
+    </footer>
     <!-- SCRIPTS -->
 
     <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>

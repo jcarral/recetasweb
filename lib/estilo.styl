@@ -9,6 +9,10 @@ vendor-prefixes ?= webkit moz official
 *
   font-family 'Lato', 'Open Sans',"helvetica neue",sans-serif
 
+p,h1,h1,h3,h4,h5,h6
+  padding 0
+  margin 0
+
 body
   margin 0
   padding 0
@@ -39,10 +43,11 @@ nav
   align-items center
   ul
     margin 0
-    padding 0
+    padding 0 0 0 10px
   li
     display inline
     color white
+    margin-right 10px
     &:hover
       color rgb(20, 205, 144)
 
@@ -62,16 +67,52 @@ nav
   h1
     color white
 
+.button,[class*="button-"]
+  display inline-block
+  height 30px
+  font 300 1em/30px 'Open Sans', sans-serif
+  letter-spacing .08em
+  padding 5px
+  margin-left 10px
+  background rgb(37, 157, 110)
+  text-decoration none
+  text-shadow 0 1px 3px rgba(0, 0, 0, 0.35)
+  letter-spacing .08em
+  color #fff
+  border-radius 2px
+  transition ease 0.35s all
+  overflow hidden
+  float left
+  padding 0 10px 0 10px
+  position relative
+
+.button:hover,[class*="button-"]:hover
+  background #078256
+  box-shadow 0 0 3px rgba(0, 0, 0, 0.5) inset
+
+.button-hover
+  &:hover
+    line-height 7.5em
+  &:before
+    content attr(data-texto)
+    color #DEEFF5
+    position absolute
+    top -2.75em
+
 main
   width 980px
-  height 2000px
   .receta
+    box-sizing border-box
     h1
       padding 10px 0 0 0
-      margin 0 0 0 10px
+      margin 0 0px 0 10px
+      &:before
+        content "\00a0\00a0\00a0\00a0\00a0\00a0"
+        background url('./images/knife.png') no-repeat
+        background-size 32px 32px
     >p
       padding 0
-      margin 0 0 0 30px
+      margin 0 0 10px 54px
       color gray
     &-info
       width 980px
@@ -85,9 +126,37 @@ main
       justify-content space-around
       padding 10px
       box-sizing border-box
+      &-chef
+        height 100px
+        width 200px
+        margin-top -40px
+        p
+          font-size 24px
+          font-weight bold
+          margin 0px 0 0 -20px
+          width 200px
+        &:before
+          content "\00a0\00a0\00a0\00a0"
+          background url('./images/chef-2.png') no-repeat
+          background-size 76px 100px
+          margin-left 30px
+      &-tiempo
+        width 200px
+        margin-left -250px
+        &:before
+          content "\00a0\00a0\00a0\00a0\00a0\00a0"
+          background url('./images/clock.png') no-repeat
+          background-size 100px 100px
       &-cal
+        width 200px
+        margin-left -220px
+        &:before
+          content "\00a0\00a0\00a0\00a0"
+          background url('./images/cal.png') no-repeat
+          background-size 76px 100px
         &:after
           content "kcal"
+          font-size 16px
     &-preparacion
       &-contenido
         padding 10px
@@ -100,12 +169,81 @@ main
         p
           display inline
 .recomendaciones
-  height 300px
+  height 220px
   display flex
+  flex-direction column
   &-sugerencias
+    padding 0 10px
     display flex
-    justify-content space-between
+    justify-content center
     align-items center
+    height 100%
+
+    ul
+      width 100%
+      display flex
+      justify-content space-around
+      align-items center
+      margin 0
+      padding 0
+      li
+        width 200px
+        height 150px
+        overflow hidden
+
+      img
+        border-radius 3px
+        transition ease 0.1s all
+        &:hover
+          width 205px
+          height 155px
+
+.comentarios
+  display flex
+  flex-direction column
+  boz-sizing border-box
+  &-nuevo
+    padding 10px
+    display flex
+    flex-direction column
+    input[type="text"],input[type="email"]
+      width 50%
+      box-sizing border-box
+      height 50px
+      font-size 16px
+      border 1px solid black
+      margin 10px 0
+    input[type="text"]
+      margin-right 10px
+  textarea
+    margin-bottom 10px
+    border 1px solid black
+  input[type="submit"]
+    margin 0
+
+  ul,li
+    padding 0
+    margin 0
+[data-comentarios="datos"]
+  display flex
+  justify-content space-between
+.comentario
+  height 100px
+  &:nth-of-type(odd)
+    background red
+    margin 0 10px
+
+footer
+  width 100%
+  height 100px
+  background rgb(102, 102, 102)
+  display flex
+  align-self center
+  justify-content center
+  color white
+  font-weight bold
+  font-size 64px
+
 .encabezado
   width 100%
   height 30px
@@ -113,6 +251,9 @@ main
   font-weight bold
   line-height 30px
   padding-left 10px
+  display flex
+  align-items center
+
 
 .caja
   box-sizing border-box
@@ -120,14 +261,29 @@ main
   border 1px solid rgba(#a6a6a6, 0.52)
   background white
   margin-bottom 10px
+  border-radius 3px
+  box-shadow 0 0 5px 2px rgba(0, 0, 0, .05)
+
+.icono
+  width 24px
+  height 24px
+  background-size 24px 24px
+  &-ingredientes
+    background url('./images/ingredientes.png') no-repeat
+  &-cooking
+    background url('./images/cooking.png') no-repeat
+  &-chat
+    background url('./images/chat.png') no-repeat
+  &-suggest
+    background url('./images/suggest.png') no-repeat
+
 
 ul
   list-style-type none
 
 input
-    border none
-    padding-left 5px
-
+  border none
+  padding-left 5px
   &::-webkit-input-placeholder
     color #aaaaaa
     position relative
