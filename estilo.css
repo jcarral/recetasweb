@@ -270,6 +270,37 @@ main .receta-info-cal:after {
   content: "kcal";
   font-size: 16px;
 }
+main .receta-ingredientes ul {
+  margin: 0;
+  padding: 0;
+  counter-reset: li;
+}
+main .receta-ingredientes li {
+  padding: 10px 15px 10px 40px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+main .receta-ingredientes li:before {
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #f2f2f2;
+  border-right: 1px solid #ddd;
+  height: 100%;
+  margin: 0;
+  padding: 10px;
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+}
+main .receta-ingredientes li:hover {
+  background: rgba(221,221,221,0.12);
+}
 main .receta-preparacion-contenido {
   padding: 10px;
 }
@@ -375,6 +406,8 @@ main .receta-preparacion-contenido p {
   -moz-box-orient: vertical;
   -webkit-flex-direction: column;
   flex-direction: column;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
 }
 .comentarios-nuevo input[type="text"],
 .comentarios-nuevo input[type="email"] {
@@ -392,6 +425,7 @@ main .receta-preparacion-contenido p {
 }
 .comentarios textarea {
   margin-bottom: 10px;
+  font-size: 16px;
   border: 1px solid #000;
 }
 .comentarios input[type="submit"] {
@@ -424,7 +458,7 @@ main .receta-preparacion-contenido p {
 footer {
   width: 100%;
   height: 100px;
-  background: #666;
+  background: #e0ac37;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -467,8 +501,6 @@ footer {
   border: 1px solid rgba(166,166,166,0.52);
   background: #fff;
   margin-bottom: 10px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
   -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,0.05);
   box-shadow: 0 0 5px 2px rgba(0,0,0,0.05);
 }
