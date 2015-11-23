@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nueva receta</title>
+  <link rel="icon" type="image/png" href="./images/icon.png" />
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header>
+    <div class="top">
+      <div class="top-logo">
+        <img src="./images/icono.png" alt="" width="50px" height="50px">
+        <h1>Recetas Universitarias</h1>
+      </div>
+      <div class="top-icons">
+        <a href="#" data-texto="Añadir nueva receta" class="button-hover">Añadir nueva receta</a>
+        <a href="#" data-texto="Buscar" class="button-hover">Buscar</a>
+
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="menu">
+      <ul>
+        <li>Inicio</li>
+        <li>Recetas</li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <form action="#" method="post" class="caja nueva">
+      <h1 class="nueva-titulo"> Añade una nueva receta</h1>
+      <input type="text" placeholder="Titulo de la receta">
+      <input type="text" placeholder="Nombre de usuario">
+      <div class="ingredientes">
+        <ul></ul>
+      </div>
+      <div class="nueva-tipo">
+            <input type="radio" value="None" id="radioOne" name="tipo" checked/>
+            <label for="radioOne" class="radio" chec>Primero</label>
+            <input type="radio" value="None" id="radioTwo" name="tipo" />
+            <label for="radioTwo" class="radio">Segundo</label>
+            <input type="radio" value="None" id="radioThree" name="tipo"/>
+            <label for="radioThree" class="radio" chec>Postre</label>
+            <input type="radio" value="None" id="radioFour" name="tipo" />
+            <label for="radioFour" class="radio">Bebida</label>
+    </div>
+      </div>
+    </form>
+  </main>
+  <footer>
+    SAR 2015-2016
+  </footer>
+</body>
+</html>
