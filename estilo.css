@@ -1,4 +1,3 @@
-@import url("http://openfontlibrary.org/face/grupo3");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 * {
   font-family: 'Lato', 'Open Sans', "helvetica neue", sans-serif;
@@ -11,6 +10,9 @@ h5,
 h6 {
   padding: 0;
   margin: 0;
+}
+a {
+  text-decoration: none;
 }
 body {
   margin: 0;
@@ -561,6 +563,9 @@ footer {
 .icono-suggest {
   background: url("./images/suggest.png") no-repeat;
 }
+.icono-usuario {
+  background: url("./images/useric.png") no-repeat #2ac476;
+}
 ul {
   list-style-type: none;
 }
@@ -619,6 +624,16 @@ input:hover:-ms-input-placeholder {
   -webkit-align-items: center;
   align-items: center;
 }
+.nueva input {
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,0.09);
+  box-shadow: 1px 2px 5px rgba(0,0,0,0.09);
+  -webkit-border-radius: 2px 4px 4px 2px;
+  border-radius: 2px 4px 4px 2px;
+  border: 1px solid rgba(0,0,0,0.07);
+  height: 10px;
+  padding: 10px;
+  margin-right: 10px;
+}
 .nueva-titulo {
   width: 100%;
   text-shadow: 0 1px 0 rgba(255,255,255,0.4);
@@ -628,12 +643,20 @@ input:hover:-ms-input-placeholder {
 }
 .nueva-titulo:before {
   content: "+";
-  padding: 5px;
+  padding: 5px 10px;
   margin-left: -10px;
   background: #15cc74;
 }
+.nueva-nombre#newNombre {
+  width: 900px;
+  font-size: 16px;
+  margin: 0;
+  height: 30px;
+  -webkit-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+}
 .nueva-tipo {
-  border-bottom: 1px solid #ddd;
+  margin-top: 10px;
   width: 100%;
   display: -webkit-box;
   display: -moz-box;
@@ -683,21 +706,57 @@ input:hover:-ms-input-placeholder {
   -moz-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-.nueva input {
-  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,0.09);
-  box-shadow: 1px 2px 5px rgba(0,0,0,0.09);
-  -webkit-border-radius: 2px 4px 4px 2px;
-  border-radius: 2px 4px 4px 2px;
-  border: 1px solid rgba(0,0,0,0.07);
-  height: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
+.nueva-ingredientes {
+  width: 958px;
+  margin-right: 10px;
+  border-top: 1px solid #ddd;
 }
-.nueva input[type="text"]:before {
+.nueva-ingredientes ul>li {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  border-right: 1px solid #ddd;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.nueva-ingredientes ul>li:before {
+  background: #2ac476;
+  border: 1px solid #25b16a;
+  color: #000;
+  height: 34px;
+  font-size: 12px;
+  line-height: 12px;
+}
+.nueva-preparacion {
+  width: 948px;
+  margin-top: 10px;
+}
+.nueva-preparacion-titulo {
+  font-size: 20px;
+}
+.nueva-preparacion-titulo:before {
   content: '';
   background: #2ac476;
-  height: 30px;
-  width: 30px;
+  width: 50px;
+  height: 50px;
+}
+.nueva-preparacion textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+}
+.nueva input[type="submit"] {
+  width: 100%;
+  height: 50px;
 }
 input[type=radio] {
   visibility: hidden;
@@ -706,4 +765,86 @@ input[type=radio]:checked + label:after {
   opacity: 1;
   -ms-filter: none;
   filter: none;
+}
+label[for="newNombre"] {
+  width: 50px;
+  height: 50px;
+  background: url("./images/nombreReceta.png") no-repeat #2ac476;
+  background-position: center;
+  -webkit-background-size: 32px 32px;
+  -moz-background-size: 32px 32px;
+  background-size: 32px 32px;
+  border: 1px solid #25b16a;
+  border-right: none;
+}
+label[data-tam="mediano"] {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #25b16a;
+  border-right: none;
+  background-position: center;
+  -webkit-background-size: 24px 24px;
+  -moz-background-size: 24px 24px;
+  background-size: 24px 24px;
+}
+.label-newCorreo {
+  background: url("./images/mailic.png") no-repeat #2ac476;
+}
+.label-newUser {
+  background: url("./images/useric.png") no-repeat #2ac476;
+}
+.label-newDesc {
+  background: url("./images/descic.png") no-repeat #2ac476;
+}
+.label-newIngred {
+  background: #2ac476;
+  border: 1px solid #25b16a;
+  border-right: none;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.newDescripcion {
+  width: 400px;
+}
+input[type="text"].newIngrediente {
+  width: 200px;
+  height: 20px;
+}
+.tag {
+  padding: 1px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  line-height: 15px;
+  height: 15px;
+  -webkit-align-self: center;
+  align-self: center;
+}
+.delete {
+  background: #e07784;
+  border: 1px solid #a81023;
+  color: #a60000;
+}
+.row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
 }

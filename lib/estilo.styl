@@ -1,7 +1,7 @@
 vendor-prefixes ?= webkit moz official
 @import 'nib'
 
-@import url(http://openfontlibrary.org/face/grupo3)
+//@import url(http://openfontlibrary.org/face/grupo3)
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700)
 
 //Variables
@@ -12,6 +12,9 @@ vendor-prefixes ?= webkit moz official
 p,h1,h1,h3,h4,h5,h6
   padding 0
   margin 0
+
+a
+  text-decoration none
 
 body
   margin 0
@@ -295,6 +298,7 @@ footer
   font-size 16px
   line-height 40px
 
+
 .encabezado
   width 100%
   height 30px
@@ -326,6 +330,8 @@ footer
     background url('./images/chat.png') no-repeat
   &-suggest
     background url('./images/suggest.png') no-repeat
+  &-usuario
+    background url('./images/useric.png') no-repeat rgb(42, 196, 118)
 
 
 ul
@@ -367,6 +373,13 @@ input
   display flex
   flex-direction column
   align-items center
+  input
+    box-shadow 1px 2px 5px rgba(0,0,0,.09)
+    border-radius 2px 4px 4px 2px
+    border 1px solid rgba(0, 0, 0, 0.07)
+    height 10px
+    padding 10px
+    margin-right 10px
   &-titulo
     width 100%
     text-shadow 0 1px 0 rgba(255, 255, 255, 0.4)
@@ -375,11 +388,17 @@ input
     border-bottom 2px solid #15cc74
     &:before
       content "+"
-      padding 5px
+      padding 5px 10px
       margin-left -10px
       background #15cc74
+  &-nombre#newNombre
+    width 900px
+    font-size 16px
+    margin 0
+    height 30px
+    border-radius 0 4px 4px 0
   &-tipo
-    border-bottom 1px solid #ddd
+    margin-top 10px
     width 100%
     display flex
     justify-content center
@@ -412,20 +431,98 @@ input
       border-top none
       border-right none
       transform rotate(-45deg)
-
-  input
-    box-shadow 1px 2px 5px rgba(0,0,0,.09)
-    border-radius 2px 4px 4px 2px
-    border 1px solid rgba(0, 0, 0, 0.07)
-    height 10px
-    padding 10px
-    margin-bottom 10px
-    &[type="text"]:before
-      content ''
-      background rgb(42, 196, 118)
+  &-ingredientes
+    width 958px
+    margin-right 10px
+    border-top 1px solid #ddd
+    ul>li
+      display flex
+      justify-content space-between
+      border-right 1px solid #ddd
       height 30px
-      width 30px
+      font-size 12px
+      line-height 30px
+      padding-top 2px
+      padding-bottom 2px
+      &:before
+        background rgb(42, 196, 118)
+        border 1px solid rgb(37, 177, 106)
+        color black
+        height 34px
+        font-size 12px
+        line-height 12px
+  &-preparacion
+    width 948px
+    margin-top 10px
+    &-titulo
+      font-size 20px
+      &:before
+        content ''
+        background rgb(42, 196, 118)
+        width 50px
+        height 50px
+    textarea
+      width 100%
+      border 1px solid #ddd
+  input[type="submit"]
+    width 100%
+    height 50px
 input[type=radio]
   visibility hidden
 input[type=radio]:checked + label:after
   opacity 1
+label[for="newNombre"]
+  width 50px
+  height 50px
+  background url('./images/nombreReceta.png') no-repeat rgb(42, 196, 118)
+  background-position center
+  background-size 32px 32px
+  border 1px solid rgb(37, 177, 106)
+  border-right none
+label[data-tam="mediano"]
+  width 30px
+  height 30px
+  border 1px solid rgb(37, 177, 106)
+  border-right none
+  background-position center
+  background-size 24px 24px
+.label
+  &-newCorreo
+    background url('./images/mailic.png') no-repeat rgb(42, 196, 118)
+  &-newUser
+    background url('./images/useric.png') no-repeat rgb(42, 196, 118)
+  &-newDesc
+    background url('./images/descic.png') no-repeat rgb(42, 196, 118)
+  &-newIngred
+    background rgb(42, 196, 118)
+    border 1px solid rgb(37, 177, 106)
+    border-right none
+    width 40px
+    height 40px
+    text-align center
+    line-height 40px
+    font-size 22px
+    font-weight bold
+.newDescripcion
+  width 400px
+input[type="text"].newIngrediente
+  width 200px
+  height 20px
+.tag
+  padding 1px
+  border-radius 3px
+  cursor pointer
+  font-size 11px
+  line-height 15px
+  height 15px
+  align-self center
+.delete
+  background rgb(224, 119, 132)
+  border 1px solid rgb(168, 16, 35)
+  color rgb(166, 0, 0)
+.row
+  display flex
+  flex-direction row
+  align-items center
+  width 100%
+  margin-top 10px

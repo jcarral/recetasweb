@@ -14,7 +14,7 @@
         <h1>Recetas Universitarias</h1>
       </div>
       <div class="top-icons">
-        <a href="#" data-texto="Añadir nueva receta" class="button-hover">Añadir nueva receta</a>
+        <a href="./nuevo.html" data-texto="Añadir nueva receta" class="button-hover">Añadir nueva receta</a>
         <a href="#" data-texto="Buscar" class="button-hover">Buscar</a>
 
       </div>
@@ -23,7 +23,7 @@
   <nav>
     <div class="menu">
       <ul>
-        <li>Inicio</li>
+        <a href="./index.html"><li>Inicio</li></a>
         <li>Recetas</li>
       </ul>
     </div>
@@ -31,10 +31,19 @@
   <main>
     <form action="#" method="post" class="caja nueva">
       <h1 class="nueva-titulo"> Añade una nueva receta</h1>
-      <input type="text" placeholder="Titulo de la receta">
-      <input type="text" placeholder="Nombre de usuario">
-      <div class="ingredientes">
-        <ul></ul>
+      <div class="row">
+        <label for="newNombre"></label><input type="text" placeholder="Titulo de la receta" id="newNombre" class="nueva-nombre">
+      </div>
+      <div class="row">
+        <label for="newUsuario" data-tam="mediano" class="label-newUser"></label>
+        <input type="text" placeholder="Nombre de usuario" id="newUsuario">
+
+        <label for="newCorreo" data-tam="mediano" class="label-newCorreo"></label>
+        <input type="mail" placeholder="Correo electronico" id="newCorreo">
+
+        <label for="newDescripcion" data-tam="mediano" class="label-newDesc"></label>
+        <input type="text" placeholder="Introduce una breve descripcion" id="newDescripcion" maxlength="50" class="newDescripcion">
+
       </div>
       <div class="nueva-tipo">
             <input type="radio" value="None" id="radioOne" name="tipo" checked/>
@@ -46,7 +55,24 @@
             <input type="radio" value="None" id="radioFour" name="tipo" />
             <label for="radioFour" class="radio">Bebida</label>
     </div>
-      </div>
+
+  <div class="receta-ingredientes nueva-ingredientes">
+    <ul>
+      <li>Agua <span class="tag delete">Borrar</span></li>
+      <li>Cerveza <span class="tag delete">Borrar</span></li>
+      <li>Vino <span class="tag delete">Borrar</span></li>
+    </ul>
+    <div class="row">
+      <label for="newIngrediente" class="label-newIngred"> + </label>
+      <input type="text" placeholder="Introduce un nuevo ingrediente" id="newIngrediente" class="newIngrediente">
+    </div>
+  </div>
+
+  <div class="nueva-preparacion">
+    <div class="nueva-preparacion-titulo">Preparacion de la receta</div>
+    <textarea name="nueva-preparacion-pasos" id="" cols="30" rows="10" placeholder="Introduce aquí los pasos a seguir"></textarea>
+  </div>
+  <input type="submit" data-texto="Enviar"class="button-hover" placeholder="Enviar" class="nuevaEnviar">
     </form>
   </main>
   <footer>
