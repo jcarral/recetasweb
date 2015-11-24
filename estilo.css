@@ -182,6 +182,7 @@ nav {
 }
 main {
   width: 980px;
+  min-height: 100%;
 }
 main .receta {
   -webkit-box-sizing: border-box;
@@ -707,8 +708,8 @@ input:hover:-ms-input-placeholder {
   transform: rotate(-45deg);
 }
 .nueva-ingredientes {
-  width: 958px;
-  margin-right: 10px;
+  width: 100%;
+  margin: 0 10px;
   border-top: 1px solid #ddd;
 }
 .nueva-ingredientes ul>li {
@@ -738,8 +739,8 @@ input:hover:-ms-input-placeholder {
   line-height: 12px;
 }
 .nueva-preparacion {
-  width: 948px;
-  margin-top: 10px;
+  width: 100%;
+  margin: 10px 10px 10px 0;
 }
 .nueva-preparacion-titulo {
   font-size: 20px;
@@ -796,6 +797,15 @@ label[data-tam="mediano"] {
 .label-newDesc {
   background: url("./images/descic.png") no-repeat #2ac476;
 }
+.label-newTiempo {
+  background: url("./images/tiempoic.png") no-repeat #2ac476;
+}
+.label-newCal {
+  background: url("./images/calic.png") no-repeat #2ac476;
+}
+.label-newPersonas {
+  background: url("./images/persic.png") no-repeat #2ac476;
+}
 .label-newIngred {
   background: #2ac476;
   border: 1px solid #25b16a;
@@ -806,6 +816,20 @@ label[data-tam="mediano"] {
   line-height: 40px;
   font-size: 22px;
   font-weight: bold;
+  cursor: pointer;
+}
+.delete {
+  cursor: pointer;
+}
+input[type="number"] {
+  line-height: 12px;
+}
+.newIngrediente + input[type="number"] {
+  margin-left: -12px;
+  height: 20px;
+  padding: 10px;
+  line-height: 20px;
+  width: 40px;
 }
 .newDescripcion {
   width: 400px;
@@ -813,22 +837,6 @@ label[data-tam="mediano"] {
 input[type="text"].newIngrediente {
   width: 200px;
   height: 20px;
-}
-.tag {
-  padding: 1px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 11px;
-  line-height: 15px;
-  height: 15px;
-  -webkit-align-self: center;
-  align-self: center;
-}
-.delete {
-  background: #e07784;
-  border: 1px solid #a81023;
-  color: #a60000;
 }
 .row {
   display: -webkit-box;

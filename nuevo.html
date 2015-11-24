@@ -58,16 +58,25 @@
 
   <div class="receta-ingredientes nueva-ingredientes">
     <ul>
-      <li>Agua <span class="tag delete">Borrar</span></li>
-      <li>Cerveza <span class="tag delete">Borrar</span></li>
-      <li>Vino <span class="tag delete">Borrar</span></li>
+      <li>Agua <span class="delete" id="delete1">X</span></li>
+      <li>Cerveza <span class="delete" id="delete2">X</span></li>
+      <li>Vino <span class="delete" id="delete3">X</span></li>
     </ul>
     <div class="row">
       <label for="newIngrediente" class="label-newIngred"> + </label>
       <input type="text" placeholder="Introduce un nuevo ingrediente" id="newIngrediente" class="newIngrediente">
+      <input type="number" placeholder="gr" class="newCantidad">
     </div>
   </div>
 
+  <div class="row">
+    <label for="newTiempo" data-tam="mediano" class="label-newTiempo"></label>
+    <input type="number" id="newTiempo" name="tiempo" placeholder="Tiempo medio">
+    <label for="newCal" data-tam="mediano" class="label-newCal"></label>
+    <input type="number" id="newCal" name="calorias" placeholder="Calorias">
+    <label for="newPersonas" data-tam="mediano" class="label-newPersonas"></label>
+    <input type="number" id="newPersonas" name="personas" placeholder="Numero de personas">
+  </div>
   <div class="nueva-preparacion">
     <div class="nueva-preparacion-titulo">Preparacion de la receta</div>
     <textarea name="nueva-preparacion-pasos" id="" cols="30" rows="10" placeholder="Introduce aquí los pasos a seguir"></textarea>

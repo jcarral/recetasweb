@@ -105,6 +105,7 @@ nav
 
 main
   width 980px
+  min-height 100%
   .receta
     box-sizing border-box
     h1
@@ -432,8 +433,8 @@ input
       border-right none
       transform rotate(-45deg)
   &-ingredientes
-    width 958px
-    margin-right 10px
+    width 100%
+    margin 0 10px
     border-top 1px solid #ddd
     ul>li
       display flex
@@ -452,8 +453,8 @@ input
         font-size 12px
         line-height 12px
   &-preparacion
-    width 948px
-    margin-top 10px
+    width 100%
+    margin 10px 10px 10px 0
     &-titulo
       font-size 20px
       &:before
@@ -493,6 +494,12 @@ label[data-tam="mediano"]
     background url('./images/useric.png') no-repeat rgb(42, 196, 118)
   &-newDesc
     background url('./images/descic.png') no-repeat rgb(42, 196, 118)
+  &-newTiempo
+    background url('./images/tiempoic.png') no-repeat rgb(42, 196, 118)
+  &-newCal
+    background url('./images/calic.png') no-repeat rgb(42, 196, 118)
+  &-newPersonas
+    background url('./images/persic.png') no-repeat rgb(42, 196, 118)
   &-newIngred
     background rgb(42, 196, 118)
     border 1px solid rgb(37, 177, 106)
@@ -503,23 +510,23 @@ label[data-tam="mediano"]
     line-height 40px
     font-size 22px
     font-weight bold
+    cursor pointer
+.delete
+  cursor pointer
+input[type="number"]
+  line-height 12px
+.newIngrediente + input[type="number"]
+  margin-left -12px
+  height 20px
+  padding 10px
+  line-height 20px
+  width 40px
 .newDescripcion
   width 400px
 input[type="text"].newIngrediente
   width 200px
   height 20px
-.tag
-  padding 1px
-  border-radius 3px
-  cursor pointer
-  font-size 11px
-  line-height 15px
-  height 15px
-  align-self center
-.delete
-  background rgb(224, 119, 132)
-  border 1px solid rgb(168, 16, 35)
-  color rgb(166, 0, 0)
+
 .row
   display flex
   flex-direction row
