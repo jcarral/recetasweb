@@ -27,6 +27,7 @@ body {
   -moz-box-orient: vertical;
   -webkit-flex-direction: column;
   flex-direction: column;
+  height: 100%;
   -webkit-box-align: center;
   -moz-box-align: center;
   -webkit-align-items: center;
@@ -182,7 +183,6 @@ nav {
 }
 main {
   width: 980px;
-  min-height: 100%;
 }
 main .receta {
   -webkit-box-sizing: border-box;
@@ -788,6 +788,9 @@ label[data-tam="mediano"] {
   -moz-background-size: 24px 24px;
   background-size: 24px 24px;
 }
+.label {
+  margin-right: -3px;
+}
 .label-newCorreo {
   background: url("./images/mailic.png") no-repeat #2ac476;
 }
@@ -802,6 +805,9 @@ label[data-tam="mediano"] {
 }
 .label-newCal {
   background: url("./images/calic.png") no-repeat #2ac476;
+}
+.label-newImg {
+  background: url("./images/imgic.png") no-repeat #2ac476;
 }
 .label-newPersonas {
   background: url("./images/persic.png") no-repeat #2ac476;
