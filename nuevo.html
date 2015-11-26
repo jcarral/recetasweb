@@ -11,7 +11,7 @@
     <div class="top">
       <div class="top-logo">
         <img src="./images/icono.png" alt="" width="50px" height="50px">
-        <h1>Recetas Universitarias</h1>
+        <h1>Titulo web</h1>
       </div>
       <div class="top-icons">
         <a href="./nuevo.html" data-texto="Añadir nueva receta" class="button-hover">Añadir nueva receta</a>
@@ -29,30 +29,30 @@
     </div>
   </nav>
   <main>
-    <form action="#" method="post" class="caja nueva">
+    <form action="print.php" method="post" class="caja nueva" id="formulario">
       <h1 class="nueva-titulo"> Añade una nueva receta</h1>
       <div class="row">
-        <label for="newNombre"></label><input type="text" placeholder="Titulo de la receta" id="newNombre" class="nueva-nombre">
+        <label for="newNombre"></label><input type="text" placeholder="Titulo de la receta" id="newNombre" class="nueva-nombre" name="titulo">
       </div>
       <div class="row">
         <label for="newUsuario" data-tam="mediano" class="label label-newUser"></label>
-        <input type="text" placeholder="Nombre de usuario" id="newUsuario">
+        <input type="text" placeholder="Nombre de usuario" id="newUsuario" name="usuario">
 
         <label for="newCorreo" data-tam="mediano" class="label label-newCorreo"></label>
-        <input type="mail" placeholder="Correo electronico" id="newCorreo">
+        <input type="mail" placeholder="Correo electronico" id="newCorreo" name="mail">
 
         <label for="newDescripcion" data-tam="mediano" class="label label-newDesc"></label>
-        <input type="text" placeholder="Introduce una breve descripcion" id="newDescripcion" maxlength="50" class="newDescripcion">
+        <input type="text" placeholder="Introduce una breve descripcion" id="newDescripcion" maxlength="50" class="newDescripcion" mail="descripcion">
 
       </div>
       <div class="nueva-tipo">
-            <input type="radio" value="None" id="radioOne" name="tipo" checked/>
+            <input type="radio" value="1" id="radioOne" name="tipo" checked/>
             <label for="radioOne" class="radio" chec>Primero</label>
-            <input type="radio" value="None" id="radioTwo" name="tipo" />
+            <input type="radio" value="2" id="radioTwo" name="tipo" />
             <label for="radioTwo" class="radio">Segundo</label>
-            <input type="radio" value="None" id="radioThree" name="tipo"/>
+            <input type="radio" value="3" id="radioThree" name="tipo"/>
             <label for="radioThree" class="radio" chec>Postre</label>
-            <input type="radio" value="None" id="radioFour" name="tipo" />
+            <input type="radio" value="4" id="radioFour" name="tipo" />
             <label for="radioFour" class="radio">Bebida</label>
     </div>
 
@@ -60,6 +60,7 @@
     <ul id="lista-ingredientes">
 
     </ul>
+
     <div class="row">
       <label for="newIngrediente" class="label-newIngred"> + </label>
       <input type="text" placeholder="Introduce un nuevo ingrediente" id="newIngrediente" class="newIngrediente">
@@ -81,6 +82,7 @@
     <div class="nueva-preparacion-titulo">Preparacion de la receta</div>
     <textarea name="nueva-preparacion-pasos" id="" cols="30" rows="10" placeholder="Introduce aquí los pasos a seguir"></textarea>
   </div>
+
   <input type="submit" data-texto="Enviar"class="button-hover" placeholder="Enviar" class="nuevaEnviar">
     </form>
   </main>

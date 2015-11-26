@@ -285,6 +285,9 @@ main .receta-ingredientes li {
   padding: 10px 15px 10px 40px;
   border-bottom: 1px solid #ddd;
   position: relative;
+  -webkit-transition: ease 0.2s all;
+  -moz-transition: ease 0.2s all;
+  transition: ease 0.2s all;
 }
 main .receta-ingredientes li:before {
   content: counter(li);
