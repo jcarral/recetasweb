@@ -865,3 +865,48 @@ input[type="text"].newIngrediente {
   width: 100%;
   margin-top: 10px;
 }
+.buscador {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.62);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.buscador-formulario {
+  width: 980px;
+  height: 50px;
+  background: #e9e5e5;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #9ea2a3;
+}
+.buscador-txt {
+  width: 900px;
+  height: 50px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.buscador-select {
+  width: 70px;
+  height: 50px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

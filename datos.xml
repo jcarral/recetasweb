@@ -1,0 +1,10 @@
+<recetas>
+  <receta id="1">
+    <titulo></titulo>
+    <ingredientes>
+      <ingrediente>Ing1</ingrediente>
+    </ingredientes>
+    <comentarios>
+    </comentarios>
+  </receta>
+</recetas>

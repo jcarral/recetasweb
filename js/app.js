@@ -33,7 +33,7 @@
 */
 
 $(".label-newIngred").click(function(){
-  if($('#newCantidadgr').val().length == 0 || $('#newIngrediente').val().length == 0 )
+  if($('#newCantidadgr').val().length === 0 || $('#newIngrediente').val().length == 0 )
     alert('Introduce todos los campos');
   else{
     var list = "<li class='ingrediente' name='ingrediente[]'>" + $('#newIngrediente').val()  + "     -" + $('#newCantidadgr').val()  +"gr "+ "<span class='delete'>X</span></li>";
@@ -72,6 +72,7 @@ $('#newCorreo').on("keydown blur", function(){
 //Validar el envio del formulario
 $('#formulario').on("submit", function(){
   return mailInfo.valido;
-})
+});
+
 
 })();
