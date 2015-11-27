@@ -75,4 +75,35 @@ $('#formulario').on("submit", function(){
 });
 
 
-})();
+/*==============================================================================
+*========================  BUSCADOR ============================================
+*==============================================================================*/
+
+var select = $('#buscador-select');
+
+
+//Cambia el valor del placeholder del buscador
+select.on("change", function(){
+  console.log(this.value);
+  $('.buscador-titulo').attr('placeholder', 'Buscar la receta por ' + this.value + ' aquí...').blur();
+});
+
+
+
+//Cierra el buscador
+  $('.buscador').on("click", function(e){
+    if(e.target != this) return;
+    $(this).css('display', 'none');
+  });
+
+  $('.buscador-close').on("click", function(){
+    $('.buscador').css('display', 'none');
+  });
+//Hace visible el buscador
+$('#btn-buscador').on("click", function(){
+  $('.buscador').css('display', 'block');
+});
+
+
+
+})();//Fin

@@ -1,11 +1,12 @@
 vendor-prefixes ?= webkit moz official
 @import 'nib'
 
-//@import url(http://openfontlibrary.org/face/grupo3)
+@import url(http://openfontlibrary.org/face/grupo3)
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700)
+@import url(https://fonts.googleapis.com/css?family=Arvo:700);
 
 //Variables
-
+cVerde1 = rgb(42, 196, 118);
 *
   font-family 'Lato', 'Open Sans',"helvetica neue",sans-serif
 
@@ -333,7 +334,7 @@ footer
   &-suggest
     background url('./images/suggest.png') no-repeat
   &-usuario
-    background url('./images/useric.png') no-repeat rgb(42, 196, 118)
+    background url('./images/useric.png') no-repeat cVerde1
 
 
 ul
@@ -447,7 +448,7 @@ input
       padding-top 2px
       padding-bottom 2px
       &:before
-        background rgb(42, 196, 118)
+        background cVerde1
         border 1px solid rgb(37, 177, 106)
         color black
         height 34px
@@ -460,7 +461,7 @@ input
       font-size 20px
       &:before
         content ''
-        background rgb(42, 196, 118)
+        background cVerde1
         width 50px
         height 50px
     textarea
@@ -476,7 +477,7 @@ input[type=radio]:checked + label:after
 label[for="newNombre"]
   width 50px
   height 50px
-  background url('./images/nombreReceta.png') no-repeat rgb(42, 196, 118)
+  background url('./images/nombreReceta.png') no-repeat cVerde1
   background-position center
   background-size 32px 32px
   border 1px solid rgb(37, 177, 106)
@@ -491,21 +492,21 @@ label[data-tam="mediano"]
 .label
   margin-right -3px
   &-newCorreo
-    background url('./images/mailic.png') no-repeat rgb(42, 196, 118)
+    background url('./images/mailic.png') no-repeat cVerde1
   &-newUser
-    background url('./images/useric.png') no-repeat rgb(42, 196, 118)
+    background url('./images/useric.png') no-repeat cVerde1
   &-newDesc
-    background url('./images/descic.png') no-repeat rgb(42, 196, 118)
+    background url('./images/descic.png') no-repeat cVerde1
   &-newTiempo
-    background url('./images/tiempoic.png') no-repeat rgb(42, 196, 118)
+    background url('./images/tiempoic.png') no-repeat cVerde1
   &-newCal
-    background url('./images/calic.png') no-repeat rgb(42, 196, 118)
+    background url('./images/calic.png') no-repeat cVerde1
   &-newImg
-    background url('./images/imgic.png') no-repeat rgb(42, 196, 118)
+    background url('./images/imgic.png') no-repeat cVerde1
   &-newPersonas
-    background url('./images/persic.png') no-repeat rgb(42, 196, 118)
+    background url('./images/persic.png') no-repeat cVerde1
   &-newIngred
-    background rgb(42, 196, 118)
+    background cVerde1
     border 1px solid rgb(37, 177, 106)
     border-right none
     width 40px
@@ -548,22 +549,122 @@ input[type="text"].newIngrediente
   display flex
   align-items center
   justify-content center
-
+  display none
+  &-close
+    font-weight bold
+    color rgb(186, 28, 28)
+    position absolute
+    top -25px
+    right 0
+    cursor pointer
   &-formulario
     width 980px
     height 50px
     background rgba(233, 229, 229, 1)
     border-radius 3px
     border 1px solid rgb(158, 162, 163)
-
+    position relative
+    top 30%
+    left 25%
   &-txt
     width 900px
     height 50px
     box-sizing border-box
     font-size 16px
+    position absolute
+  &-titulo
+    top 0
+    left 0
+  //  display none
+  &-nombre
+    top 0
+    left 0
+    display none
   &-select
-    width 70px
+    width 90px
     height 50px
-    //box-sizing border-box
-    //padding 10px
     appearance none
+    position absolute
+    right 0
+
+//INDEX
+
+.fondo
+  width 100%
+  height 300px
+  background url('./images/fondo.jpg') no-repeat center
+  background size 100% 500px
+  margin-top -10px
+  margin-bottom 10px
+  box-shadow 0px 1px 3px 0px rgba(0, 0, 0, 0.21)
+  &-capa
+    height 100%
+    width 100%
+    transition ease 0.8s all
+    &:hover
+      background rgba(0, 0, 0, 0.19)
+.ultimas
+  padding 10px
+  &-recetas
+    display flex
+    flex-flow row wrap
+    align-content center
+    justify-content space-around
+  &-titulo
+    border-bottom 5px solid cVerde1
+    font-size 3rem
+    font-family  'GRUPO3'
+    color rgb(65, 65, 65)
+    margin 0 20px
+  &-cambio
+    display flex
+    justify-content center
+    align-items center
+    height 50px
+    width 100%
+    border-top 5px solid cVerde1
+    button
+      margin 0 10px
+      background cVerde1
+      color white
+      border-radius 4px
+      text-shadow 0 1px 1px rgba(0, 0, 0, 0.2)
+      display: inline-block;
+      zoom 1
+      line-height normal
+      white-space nowrap
+      vertical-align middle
+      text-align center
+      cursor pointer
+      user-select none
+      text-decoration none
+      border none
+      font-size 100%
+      padding 10px 20px
+      transition ease 0.5s all
+      &:hover
+        background rgb(38, 171, 103)
+
+.contenedor
+  background red
+  height 200px
+  width 200px
+  overflow hidden
+  position relative
+  box-shadow 0px 2px 5px 0 rgba(0, 0, 0, 0.26)
+  margin 10px 0
+  &-up
+    background rgba(0, 0, 0, 0.56)
+    position absolute
+    bottom -200px
+    height 200px
+    width 200px
+    transition 1s bottom cubic-bezier(0,1,1,1)
+    color white
+    font-size 24px
+    font-weight bold
+    text-align center
+    line-height 200px
+  &:hover .contenedor-up
+    position absolute
+    bottom 0

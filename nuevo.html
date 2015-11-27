@@ -15,7 +15,7 @@
       </div>
       <div class="top-icons">
         <a href="./nuevo.html" data-texto="Añadir nueva receta" class="button-hover">Añadir nueva receta</a>
-        <a href="#" data-texto="Buscar" class="button-hover">Buscar</a>
+        <a href="#" data-texto="Buscar" class="button-hover" id="btn-buscador">Buscar</a>
 
       </div>
     </div>
@@ -83,18 +83,21 @@
     <textarea name="nueva-preparacion-pasos" id="" cols="30" rows="10" placeholder="Introduce aquí los pasos a seguir"></textarea>
   </div>
 
-  <input type="submit" data-texto="Enviar"class="button-hover" placeholder="Enviar" class="nuevaEnviar">
+  <input type="submit" data-texto="Enviar" class="button-hover nuevaEnviar" placeholder="Enviar" >
     </form>
   </main>
 
   <!-- BUSCADOR -->
   <section class="buscador">
     <form action="" class="buscador-formulario">
-      <input type="text" class="buscador-txt" name="buscador" placeholder="Buscar la receta aquí...">
-      <select name="tipo" id="" class="buscador-select">
-        <option value="1">Ingredientes</option>
-        <option value="2">Autor</option>
-        <option value="3">Titulo</option>
+      <span class="buscador-close">X</span>
+
+      <input type="text" class="buscador-txt  buscador-nombre" name="buscador-autor" placeholder="Buscar la receta por nombre aquí...">
+      <input type="text" class="buscador-txt buscador-titulo" name="buscador-titulo" placeholder="Buscar la receta por titulo aquí...">
+      <select name="tipo" id="buscador-select" class="buscador-select">
+        <option value="Ingrediente">Ingredientes</option>
+        <option value="autor">Autor</option>
+        <option value="titulo">Titulo</option>
       </select>
     </form>
   </section>
