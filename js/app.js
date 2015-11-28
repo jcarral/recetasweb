@@ -74,7 +74,16 @@ $('#formulario').on("submit", function(){
   return mailInfo.valido;
 });
 
+//Cierra el buscador
+  $('.modal-nueva').on("click", function(e){
+    if(e.target != this) return;
+    $(this).css('display', 'none');
+  });
 
+
+  $('#btn-nueva').on("click", function(){
+    $('.modal-nueva').css('display', 'block');
+  });
 /*==============================================================================
 *========================  BUSCADOR ============================================
 *==============================================================================*/
@@ -84,7 +93,6 @@ var select = $('#buscador-select');
 
 //Cambia el valor del placeholder del buscador
 select.on("change", function(){
-  console.log(this.value);
   $('.buscador-titulo').attr('placeholder', 'Buscar la receta por ' + this.value + ' aquí...').blur();
 });
 
@@ -104,6 +112,29 @@ $('#btn-buscador').on("click", function(){
   $('.buscador').css('display', 'block');
 });
 
+
+
+//AJAX
+
+
+$('.buscador-titulo').keyup(function(){
+  var campoBusqueda = $('#campo-buscador').val();
+  var miRegEx = new RegExp(campoBusqueda, "i");
+  $.get('./datos.xml', function(data){
+    var out = '<ul class="buscador-live">';
+    $(data).find('recetas').find('receta').each(function(i){
+      if($(this).find(document.getElementById('buscador-select').value).text().search(miRegEx) != -1){
+        out += '<li>';
+        out += '<img src="'+ $(this).find('imagen').text() +'" alt="" width="30px" height="30px">';
+        out += '<h3>' + $(this).find('titulo').text() + '</h3>';
+        out += '<p>' + $(this).find('descripcion').text() + '</p>';
+        out += '</li>';
+      }
+    });
+    out += '</ul>';
+    $('#actualizar').html(out);
+  });
+});
 
 
 })();//Fin
