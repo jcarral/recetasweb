@@ -889,6 +889,7 @@ input[type="text"].newIngrediente {
   -webkit-justify-content: center;
   justify-content: center;
   display: none;
+  font-weight: bold;
 }
 .buscador-close {
   font-weight: bold;
@@ -936,6 +937,59 @@ input[type="text"].newIngrediente {
   position: absolute;
   right: 0;
 }
+.buscador-live {
+  width: 100%;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 50px 0 0 0;
+}
+.buscador-live li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  -webkit-transition: ease 0.3s all;
+  -moz-transition: ease 0.3s all;
+  transition: ease 0.3s all;
+}
+.buscador-live li:hover {
+  background: rgba(120,120,120,0.04);
+}
+.buscador-live li >p {
+  margin-left: 40px;
+  color: #808080;
+}
+.buscador-live li >img {
+  float: left;
+  margin-right: 20px;
+  margin-top: 8px;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+.container {
+  width: 100%;
+  background: #fff;
+  margin-top: -10px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.21) inset;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.21) inset;
+}
 .fondo {
   width: 100%;
   height: 300px;
@@ -943,8 +997,8 @@ input[type="text"].newIngrediente {
   background: size 100% 500px;
   margin-top: -10px;
   margin-bottom: 10px;
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.21);
-  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.21);
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.21) inset;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.21) inset;
 }
 .fondo-capa {
   height: 100%;
@@ -972,8 +1026,8 @@ input[type="text"].newIngrediente {
   -moz-box-lines: multiple;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  -webkit-align-content: center;
-  align-content: center;
+  -webkit-align-content: flex-end;
+  align-content: flex-end;
   -webkit-box-pack: distribute;
   -moz-box-pack: distribute;
   -webkit-justify-content: space-around;

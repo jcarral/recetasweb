@@ -550,6 +550,7 @@ input[type="text"].newIngrediente
   align-items center
   justify-content center
   display none
+  font-weight bold
   &-close
     font-weight bold
     color rgb(186, 28, 28)
@@ -586,9 +587,38 @@ input[type="text"].newIngrediente
     appearance none
     position absolute
     right 0
+  &-live
+    width 100%
+    background white
+    box-sizing border-box
+    padding 0
+    margin 50px 0 0 0
+    li
+      padding 10px
+      border 1px solid #ddd
+      border-radius 0 0 5px 5px
+      transition ease 0.3s all
+      &:hover
+        background rgba(120, 120, 120, 0.04)
+      >p
+        margin-left 40px
+        color gray
+      >img
+        float left
+        margin-right 20px
+        margin-top 8px
+        border-radius 100%
+
 
 //INDEX
-
+.container
+  width 100%
+  background white
+  margin-top -10px
+  display flex
+  flex-direction column
+  align-items center
+  box-shadow 0px 1px 3px 0px rgba(0, 0, 0, 0.21) inset
 .fondo
   width 100%
   height 300px
@@ -596,7 +626,7 @@ input[type="text"].newIngrediente
   background size 100% 500px
   margin-top -10px
   margin-bottom 10px
-  box-shadow 0px 1px 3px 0px rgba(0, 0, 0, 0.21)
+  box-shadow 0px 1px 3px 0px rgba(0, 0, 0, 0.21) inset
   &-capa
     height 100%
     width 100%
@@ -608,7 +638,7 @@ input[type="text"].newIngrediente
   &-recetas
     display flex
     flex-flow row wrap
-    align-content center
+    align-content flex-end
     justify-content space-around
   &-titulo
     border-bottom 5px solid cVerde1
