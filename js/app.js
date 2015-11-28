@@ -31,12 +31,11 @@
 /*
 * Introduce un ingrediente nuevo a la lista y activa el evento de borrar de la lista
 */
-
-$(".label-newIngred").click(function(){
-  if($('#newCantidadgr').val().length === 0 || $('#newIngrediente').val().length == 0 )
+var addLista = function(){
+  if($('#newCantidadgr').val().length === 0 || $('#newIngrediente').val().length === 0)
     alert('Introduce todos los campos');
   else{
-    var list = "<li class='ingrediente' name='ingrediente[]'>" + $('#newIngrediente').val()  + "     -" + $('#newCantidadgr').val()  +"gr "+ "<span class='delete'>X</span></li>";
+    var list = "<li class='ingrediente'>" + $('#newIngrediente').val()  + "     -" + $('#newCantidadgr').val()  +"gr "+ "<span class='delete'>X</span><input type='hidden' name='ingrediente[]' value='"+$('#newIngrediente').val() +"'</li>";
     $("#lista-ingredientes").append(list);
     $("li.ingrediente:last-child>.delete").click(function() {
       $(this).parent().fadeOut(function(){
@@ -44,6 +43,15 @@ $(".label-newIngred").click(function(){
       });
     });
 }
+};
+
+$(".label-newIngred").click(addLista);
+
+$('#newIngrediente').keypress(function(e){
+  if(e.keyCode === 13){
+    e.preventDefault();
+    addLista();
+  }
 });
 
 
@@ -71,7 +79,7 @@ $('#newCorreo').on("keydown blur", function(){
 
 //Validar el envio del formulario
 $('#formulario').on("submit", function(){
-  return mailInfo.valido;
+  return mailInfo.valido && (!$('#newIngrediente').is(':focus') || !$('#newCantidadgr').is(':focus'));
 });
 
 //Cierra el buscador
@@ -116,7 +124,7 @@ $('#btn-buscador').on("click", function(){
 
 //AJAX
 
-
+//Busca una receta y actualiza en vivo usando ajax
 $('.buscador-titulo').keyup(function(){
   var campoBusqueda = $('#campo-buscador').val();
   var miRegEx = new RegExp(campoBusqueda, "i");
