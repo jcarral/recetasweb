@@ -1,3 +1,40 @@
+<?php
+session_start();
+if( strcasecmp($_SERVER['REQUEST_METHOD'],"POST") === 0) {
+$_SESSION['postdata'] = $_POST;
+header("Location: ".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
+exit;
+}
+if( isset($_SESSION['postdata'])) {
+$_POST = $_SESSION['postdata'];
+unset($_SESSION['postdata']);
+}
+
+
+$recetas = simplexml_load_file("datos.xml");
+if(isset($_GET["id"])){
+  $id = $_GET["id"];
+
+  foreach ($recetas as $actual) {
+    if($actual['id'] == $id)
+      break;
+  }
+
+}
+
+if (isset($_POST['submit'])) {
+  $autor = (isset($_POST['usuario'])&& strlen($_POST['usuario'])>0)?$_POST["usuario"]:"Anónimo";
+  $mail = (isset($_POST['mail'])&& strlen($_POST['mail'])>0)?$_POST["mail"]:" ";
+  $texto = $_POST['texto'];
+  $nuevocom = $actual->comentarios->addChild('comentario');
+  $nuevocom->addChild('texto', $texto);
+  $nuevocom->addChild('fecha', date('l jS \of F Y h:i:s A'));
+  $nuevocom->addChild('usuario', $autor);
+  $recetas->asXML('datos.xml');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +51,7 @@
           <h1>Titulo web</h1>
         </div>
         <div class="top-icons">
-          <a href="./nuevo.html" data-texto="Añadir nueva receta" class="button-hover">Añadir nueva receta</a>
+          <a href="#" data-texto="Añadir nueva receta" class="button-hover" id="btn-nueva">Añadir nueva receta</a>
           <a href="#" data-texto="Buscar" class="button-hover" id="btn-buscador">Buscar</a>
 
         </div>
@@ -23,40 +60,43 @@
     <nav>
       <div class="menu">
         <ul>
-          <li>Inicio</li>
+          <a href="index.html"><li>Inicio</li></a>
           <li>Recetas</li>
         </ul>
       </div>
     </nav>
     <main>
       <section class="receta caja">
-        <h1 class="receta-titulo">Titulo de la receta</h1>
-        <p class="receta-subtitulo">Breve descripcion de la receta</p>
+        <h1 class="receta-titulo"><?php echo $actual->titulo ?></h1>
+        <p class="receta-subtitulo"><?php echo $actual->descripcion ?></p>
         <div class="receta-info">
-          <div class="receta-info-chef"><p>Nombre Usuario</p></div>
-          <div class="receta-info-tiempo">5'</div>
-          <div class="receta-info-cal">104</div>
+          <div class="receta-info-chef"><p><?php echo $actual->autor ?></p></div>
+          <div class="receta-info-tiempo"><?php echo $actual->tiempo ?></div>
+          <div class="receta-info-cal"><?php echo $actual->calorias ?></div>
         </div>
         <div class="receta-ingredientes">
           <div class="titulo encabezado"><i class="icono icono-ingredientes"></i><p>Ingredientes</p></div>
           <ul>
-            <li>Ingrediente1</li>
-            <li>Ingrediente2</li>
-            <li>Ingrediente3</li>
-            <li>Ingrediente4</li>
-            <li>Ingrediente5</li>
-            <li>Ingrediente6</li>
+            <?php
+              $lista = "";
+              echo $actual->ingredientes;
+              foreach ($actual->ingredientes->ingrediente as $value) {
+                $lista .= "<li>";
+                $lista .= $value;
+                $lista .= "</li>";
+              }
+              echo $lista;
+             ?>
           </ul>
         </div>
         <div class="receta-preparacion">
           <div class="encabezado"><i class="icono icono-cooking"></i><p>Preparacion</p></div>
           <div class="receta-preparacion-contenido">
-            <img src="./images/receta.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam cum harum quibusdam minus esse labore assumenda quo laudantium nisi reiciendis, dolores sunt non error dolore, perspiciatis architecto iusto commodi ducimus!</p>
-            <p>Tempore ipsa reiciendis repudiandae veritatis eum beatae illum quia minus, rerum architecto quis nulla vero, omnis eius harum iste reprehenderit fuga, quod dignissimos est possimus assumenda accusamus. Eum, voluptatem, mollitia!</p>
-            <p>Laborum nobis ea dolorum harum minus officia voluptas laboriosam tempore expedita distinctio. Suscipit numquam, eligendi eum ut soluta, sint doloremque tempore dolore atque quisquam qui provident, minima nisi adipisci repellendus.</p>
-            <p>Odit quia ullam dicta illo repudiandae nisi deleniti laudantium, optio hic velit. Architecto, ducimus deleniti eligendi blanditiis nam dolores veniam a ad nostrum quisquam placeat, perspiciatis molestiae mollitia aut non.</p>
-            <p>Nam voluptas dolores omnis minima atque porro numquam explicabo molestias ab, rerum suscipit ipsum quo alias nesciunt quidem ducimus ipsam pariatur necessitatibus. Sed quam repellat, aut animi nam id voluptate.</p>
+            <?php echo "<img src='" .  $actual->imagen . "' alt=''>" ?>
+            <p>
+            <?php echo $actual->texto ?>
+
+          </p>
           </div>
         </div>
       </section>
@@ -73,45 +113,29 @@
       </section>
       <section class="comentarios caja">
         <div class="encabezado"><i class="icono icono-chat"></i><p>Comentarios</p></div>
-        <form action="#" method="Post" class="comentarios-nuevo">
+        <?php  echo "<form action='receta.php?id=" . $id . "' method='Post' class='comentarios-nuevo'>"?>
           <div data-comentarios="datos">
-            <input type="text" placeholder="Usuario">
-            <input type="email" placeholder="Correo electrónico">
+            <input type="text" placeholder="Usuario" name="usuario">
+            <input type="email" placeholder="Correo electrónico" name="mail">
           </div>
-          <textarea rows="10" cols="50" placeholder="Introduce un nuevo comentario"></textarea>
-          <input type="submit" data-texto="Enviar" class="button-hover" placeholder="Enviar">
+          <textarea rows="10" cols="50" placeholder="Introduce un nuevo comentario" name="texto"></textarea>
+          <input type="submit" data-texto="Enviar" class="button-hover" name="submit" placeholder="Enviar">
         </form>
         <ul>
-          <li class="comentario">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <span class="comentario-bottom">Aug 24, 2014 @ 2:35 PM, Nombre Usuario</span>
-          </li>
-          <li class="comentario">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <span class="comentario-bottom">Aug 24, 2014 @ 2:35 PM, Nombre Usuario</span>
-          </li>
-          <li class="comentario">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <span class="comentario-bottom">Aug 24, 2014 @ 2:35 PM, Nombre Usuario</span>
-          </li>
-          <li class="comentario">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <span class="comentario-bottom">Aug 24, 2014 @ 2:35 PM, Nombre Usuario</span>
-          </li>
-          <li class="comentario">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <span class="comentario-bottom">Aug 24, 2014 @ 2:35 PM, Nombre Usuario</span>
-          </li>
+
+            <?php
+            $comentario = "";
+              foreach ($actual->comentarios->comentario as $value) {
+                $comentario .= "<li class='comentario'>";
+                $comentario .= "<p>" . $value->texto . "</p>";
+                $comentario .= "<span class='comentario-bottom'>";
+                $comentario .= $value->fecha . " @ ". $value->usuario . "</span></li>";
+              }
+              echo $comentario;
+
+             ?>
+
+
         </ul>
       </section>
 
@@ -130,6 +154,65 @@
         </select>
       </form>
     </section>
+    <!-- NUEVA RECETA MODAL -->
+    <main class="modal-nueva">
+      <form action="print.php" method="post" class="caja nueva" id="formulario">
+        <h1 class="nueva-titulo"> Añade una nueva receta</h1>
+        <div class="row">
+          <label for="newNombre"></label><input type="text" placeholder="Titulo de la receta" id="newNombre" class="nueva-nombre" name="titulo">
+        </div>
+        <div class="row">
+          <label for="newUsuario" data-tam="mediano" class="label label-newUser"></label>
+          <input type="text" placeholder="Nombre de usuario" id="newUsuario" name="usuario">
+
+          <label for="newCorreo" data-tam="mediano" class="label label-newCorreo"></label>
+          <input type="mail" placeholder="Correo electronico" id="newCorreo" name="mail">
+
+          <label for="newDescripcion" data-tam="mediano" class="label label-newDesc"></label>
+          <input type="text" placeholder="Introduce una breve descripcion" id="newDescripcion" maxlength="50" class="newDescripcion" name="descripcion">
+
+        </div>
+        <div class="nueva-tipo">
+              <input type="radio" value="1" id="radioOne" name="tipo" checked/>
+              <label for="radioOne" class="radio" chec>Primero</label>
+              <input type="radio" value="2" id="radioTwo" name="tipo" />
+              <label for="radioTwo" class="radio">Segundo</label>
+              <input type="radio" value="3" id="radioThree" name="tipo"/>
+              <label for="radioThree" class="radio" chec>Postre</label>
+              <input type="radio" value="4" id="radioFour" name="tipo" />
+              <label for="radioFour" class="radio">Bebida</label>
+      </div>
+
+    <div class="receta-ingredientes nueva-ingredientes">
+      <ul id="lista-ingredientes">
+
+      </ul>
+
+      <div class="row">
+        <label for="newIngrediente" class="label-newIngred"> + </label>
+        <input type="text" placeholder="Introduce un nuevo ingrediente" id="newIngrediente" class="newIngrediente">
+        <input type="number" placeholder="gr" class="newCantidad" id="newCantidadgr">
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="newTiempo" data-tam="mediano" class="label label-newTiempo"></label>
+      <input type="number" id="newTiempo" name="tiempo" placeholder="Tiempo medio">
+      <label for="newCal" data-tam="mediano" class="label label-newCal"></label>
+      <input type="number" id="newCal" name="calorias" placeholder="Calorias">
+      <label for="newPersonas" data-tam="mediano" class="label label-newPersonas"></label>
+      <input type="number" id="newPersonas" name="personas" placeholder="Numero de personas">
+      <label for="newPersonas" data-tam="mediano" class="label label-newImg"></label>
+      <input type="url" id="newImg" name="img" placeholder="url de la imagen">
+    </div>
+    <div class="nueva-preparacion">
+      <div class="nueva-preparacion-titulo">Preparacion de la receta</div>
+      <textarea name="nueva-preparacion-pasos" id="" cols="30" rows="10" placeholder="Introduce aquí los pasos a seguir"></textarea>
+    </div>
+
+    <input type="submit" name="submit" data-texto="Enviar" class="button-hover nuevaEnviar" placeholder="Enviar" >
+      </form>
+    </main>
     <footer>
       SAR 2015-2016
     </footer>

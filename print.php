@@ -2,15 +2,15 @@
 
 $recetas = simplexml_load_file("datos.xml");
 if(isset($_POST["submit"])){
-  $id = count($recetas->children()); //No sé por que me saca los id's de 6 en 6
-  $titulo = isset($_POST['titulo'])?$_POST['titulo']:'Receta sin titulo';
-  $descripcion = isset($_POST['descripcion'])?$_POST["descripcion"]:" ";
-  $autor = isset($_POST['usuario'])?$_POST["usuario"]:"Anónimo";
-  $mail = isset($_POST['mail'])?$_POST["mail"]:" ";
-  $tiempo = isset($_POST['calorias'])?$_POST['calorias']: "-";
-  $personas = isset($_POST['personas'])?$_POST['personas']:'1';
-  $imagen = isset($_POST['img'])?$_POST['img']:'./images/default.png';
-  $calorias = isset($_POST['calorias'])?$_POST['calorias']:" - ";
+  $id = count($recetas->children());
+  $titulo = (isset($_POST['titulo']) && strlen($_POST['titulo'])>0)?$_POST['titulo']:'Receta sin titulo';
+  $descripcion = (isset($_POST['descripcion'])&& strlen($_POST['descripcion'])>0)?$_POST["descripcion"]:" ";
+  $autor = (isset($_POST['usuario'])&& strlen($_POST['usuario'])>0)?$_POST["usuario"]:"Anónimo";
+  $mail = (isset($_POST['mail'])&& strlen($_POST['mail'])>0)?$_POST["mail"]:" ";
+  $tiempo = (isset($_POST['tiempo'])&& strlen($_POST['tiempo'])>0)?$_POST['tiempo']: "-";
+  $personas = (isset($_POST['personas'])&& strlen($_POST['personas'])>0)?$_POST['personas']:'1';
+  $imagen = (isset($_POST['img'])&& strlen($_POST['img'])>0)?$_POST['img']:'./images/default.png';
+  $calorias = (isset($_POST['calorias'])&& strlen($_POST['calorias'])>0)?$_POST['calorias']:" - ";
   $texto = $_POST['nueva-preparacion-pasos'];
   switch ($_POST['tipo']) {
     case 1:
@@ -33,17 +33,17 @@ if(isset($_POST["submit"])){
   $receta->addChild('descripcion', $descripcion);
   $receta->addChild('autor', $autor);
   $receta->addChild('mail', $mail);
-  $lista_ingredientes = $receta->addChild('Ingredientes');
+  $lista_ingredientes = $receta->addChild('ingredientes');
   foreach($ingredientes as $val){
     $lista_ingredientes->addChild('ingrediente', $val);
   }
   $receta->addChild('tiempo', $tiempo);
   $receta->addChild('personas', $personas);
-  $recetas->addChild('imagen', $imagen);
-  $recetas->addChild('calorias', $calorias);
-  $recetas->addChild('tipo', $tipo);
-  $recetas->addChild('texto', $texto);
-  $recetas->addChild('comentarios');
+  $receta->addChild('imagen', $imagen);
+  $receta->addChild('calorias', $calorias);
+  $receta->addChild('tipo', $tipo);
+  $receta->addChild('texto', $texto);
+  $receta->addChild('comentarios');
   $recetas->asXML('datos.xml');
 
 

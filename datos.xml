@@ -1,77 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <recetas>
   <receta id="0">
-    <titulo>wewe</titulo>
-    <descripcion>asdas</descripcion>
-    <autor>sada</autor>
-    <mail>sada@vjh.es</mail>
-    <Ingredientes>
-      <ingrediente>asas</ingrediente>
-      <ingrediente>asasas</ingrediente>
-      <ingrediente>asasasasas</ingrediente>
-    </Ingredientes>
-    <tiempo>5</tiempo>
-    <personas>5</personas>
+    <titulo>Receta genérica</titulo>
+    <descripcion>
+    </descripcion>
+    <autor>Anónimo</autor>
+    <mail>sada@vjh.eh</mail>
+    <ingredientes/>
+    <tiempo>-</tiempo>
+    <personas>1</personas>
+    <imagen>http://unaracnidounacamiseta.com/wp-content/uploads/2012/07/Lorem-Ipsum.jpg</imagen>
+    <calorias> - </calorias>
+    <tipo>Primero</tipo>
+    <texto>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</texto>
+    <comentarios>
+      <comentario>
+        <texto>dtreyhfdth</texto>
+        <fecha>Sunday 29th of November 2015 03:03:15 PM</fecha>
+        <usuario>fdghgf</usuario>
+      </comentario>
+    </comentarios>
   </receta>
-  <imagen>http://www.jiysgd.es</imagen>
-  <calorias>5</calorias>
-  <tipo>Segundo</tipo>
-  <texto>fghdfgbdfgdfgddf</texto>
-  <comentarios/>
-  <receta id="6">
-    <titulo>wqq</titulo>
-    <descripcion>qwqw</descripcion>
-    <autor>qwe</autor>
-    <mail>dfkuj@eis.es</mail>
-    <Ingredientes/>
-    <tiempo/>
-    <personas/>
-  </receta>
-  <imagen/>
-  <calorias/>
-  <tipo>Primero</tipo>
-  <texto>asasA</texto>
-  <comentarios/>
-  <receta id="12">
-    <titulo>fgh</titulo>
-    <descripcion>dsfds</descripcion>
-    <autor>SASA</autor>
-    <mail>fghg@es.es</mail>
-    <Ingredientes/>
-    <tiempo/>
-    <personas/>
-  </receta>
-  <imagen/>
-  <calorias/>
-  <tipo>Primero</tipo>
-  <texto>bhnjgh</texto>
-  <comentarios/>
   <receta id="1">
-    <titulo>fgh</titulo>
-    <descripcion/>
-    <autor>sdfsd</autor>
-    <mail>sada@vjh.es</mail>
-    <Ingredientes/>
-    <tiempo/>
-    <personas/>
+    <titulo>asfasf</titulo>
+    <descripcion>
+    </descripcion>
+    <autor>Anónimo</autor>
+    <mail>dfkuj@eis.esl</mail>
+    <ingredientes>
+      <ingrediente>asda</ingrediente>
+      <ingrediente>asda</ingrediente>
+    </ingredientes>
+    <tiempo>-</tiempo>
+    <personas>1</personas>
+    <imagen>./images/default.png</imagen>
+    <calorias> - </calorias>
+    <tipo>Primero</tipo>
+    <texto>klñ&#13;</texto>
+    <comentarios>
+      <comentario>
+        <texto>ewsfsedfvsd</texto>
+        <fecha>Sunday 29th of November 2015 03:13:06 PM</fecha>
+        <usuario>fghfhg</usuario>
+      </comentario>
+    </comentarios>
   </receta>
-  <imagen/>
-  <calorias/>
-  <tipo>Primero</tipo>
-  <texto>cxzvxcv</texto>
-  <comentarios/>
-  <receta id="24">
-    <titulo>dfsgdfg</titulo>
-    <descripcion/>
-    <autor>dfgdf</autor>
-    <mail>sada@vjh.es</mail>
-    <Ingredientes/>
-    <tiempo/>
-    <personas/>
-  </receta>
-  <imagen/>
-  <calorias/>
-  <tipo>Primero</tipo>
-  <texto>fgfghfg</texto>
-  <comentarios/>
 </recetas>
