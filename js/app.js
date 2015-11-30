@@ -147,22 +147,23 @@ $('.buscador-titulo').keyup(function(){
 /*==============================================================================
 *===========================  INDEX ============================================
 *==============================================================================*/
-var RECETAS_PP = 12;
+var RECETAS_PP = 12; //Numero máximo de recetas a mostrar por página
 var index_recetas_pp = 0;
+var num_recetas;
 
 var cargarUltimas = function(){
   var limite = index_recetas_pp + RECETAS_PP;
   $.get('./datos.xml', function(data){
     var s_recetas = "";
-    var xml_recetas = $(data).find('recetas').find('receta');
-
+    var xml_recetas = $($(data).find('recetas').find('receta').get().reverse());
+    num_recetas = $(data).find("recetas").find('receta').length;
     xml_recetas.each(function(i) {
       if(i>=index_recetas_pp){
-      s_recetas += "<a href='./receta.php?id='" + $(this).attr('id') + "' class='contenedor'>";
+      s_recetas += "<a href='./receta.php?id=" + $(this).attr('id') + "' class='contenedor'>";
       s_recetas += "<img src='" + $(this).find('imagen').text() + "' height='200px' width='200px' alt=''>";
       s_recetas += "<div class='contenedor-up'>"+ $(this).find('titulo').text()+"</div></a>";
     }
-    if(i>=RECETAS_PP-1)
+    if(i>=index_recetas_pp + RECETAS_PP-1)
       return false;
 
     });
@@ -171,4 +172,16 @@ var cargarUltimas = function(){
 };
 
 cargarUltimas();
+
+$('#prev').click(function(){
+  if(index_recetas_pp>=RECETAS_PP){
+    index_recetas_pp -= RECETAS_PP;
+    cargarUltimas();
+  }
+});
+
+$('#next').click(function(){
+  index_recetas_pp += RECETAS_PP;
+  cargarUltimas();
+});
 })();//Fin
