@@ -105,11 +105,8 @@ if (isset($_POST['submit'])) {
       <section class="recomendaciones caja">
         <div class="encabezado"><i class="icono icono-suggest"></i><p>Sugerencias</p></div>
         <div class="recomendaciones-sugerencias">
-          <ul>
-            <li class=""><img src="./images/sugerencia.jpg" alt="" height="150px" width="200px"/></li>
-            <li><img src="./images/sugerencia.jpg" alt="" height="150px" width="200px"/></li>
-            <li><img src="./images/sugerencia.jpg" alt="" height="150px" width="200px"/></li>
-            <li><img src="./images/sugerencia.jpg" alt="" height="150px" width="200px"/></li>
+          <ul id="sugerencias">
+            
           </ul>
       </div>
       </section>

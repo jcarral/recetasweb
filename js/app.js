@@ -26,7 +26,9 @@
   };
 
 
-//Formulario
+  /*==============================================================================
+  *========================  FORMULARIO ============================================
+  *==============================================================================*/
 
 /*
 * Introduce un ingrediente nuevo a la lista y activa el evento de borrar de la lista
@@ -183,5 +185,32 @@ $('#prev').click(function(){
 $('#next').click(function(){
   index_recetas_pp += RECETAS_PP;
   cargarUltimas();
+});
+
+
+/*==============================================================================
+*========================  SUGERENCIAS ============================================
+*==============================================================================*/
+$.get('./datos.xml', function(data){
+  var xml_recetas = $(data).find('recetas').find('receta');
+  var s_sugerencias = "";
+  var first= Math.floor(Math.random() * ($(data).find("recetas").find('receta').length-4));
+  var last = first+4;
+  var index = 0;
+  xml_recetas.each(function(){
+    console.log("first: " + first + ", last: " + last + ", index: " + index);
+    if(index>first){
+      console.log("entra");
+      s_sugerencias += "<a href='./receta.php?id=" + $(this).attr('id') + "'><li>";
+      s_sugerencias += "<img src='" + $(this).find('imagen').text() +"' alt='' height='150px' width='200px'/>";
+      s_sugerencias += "</li></a>";
+    }
+    if(index>=last){
+     return false;
+    }
+  index++;
+  console.log(first);
+  });
+  $('#sugerencias').html(s_sugerencias);
 });
 })();//Fin
