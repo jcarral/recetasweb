@@ -20,6 +20,8 @@ if(isset($_GET["id"])){
       break;
   }
 
+}else{
+  header("Location: ./index.html");
 }
 
 if (isset($_POST['submit'])) {

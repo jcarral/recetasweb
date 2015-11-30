@@ -50,9 +50,3 @@ if(isset($_POST["submit"])){
   header("Location: ./receta.php?id=$id");
 }
  ?>
-
-
-
-<pre>
-  <?php print_r($_POST); ?>
-</pre>
