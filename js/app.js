@@ -213,4 +213,30 @@ $.get('./datos.xml', function(data){
   });
   $('#sugerencias').html(s_sugerencias);
 });
+
+/*==============================================================================
+*========================  COMENTARIOS ============================================
+*==============================================================================*/
+
+$('#form-coment').on("submit", function(e){
+
+  var cssError = {'border': '2px solid red','background': 'rgba(247, 167, 177, 0.23)','color': 'red'};
+  var cssDefault = {'border': '1px solid black', 'background': 'white', 'color': 'black'};
+
+  if($('#comentario-usuario').val().length === 0 || $('#comentario-text').val().length === 0){
+    alert('Campos incorrectos');
+    e.preventDefault();
+    if($('#comentario-usuario').val().length === 0)
+      addEstilo($('#comentario-usuario')[0], cssError);
+    else
+      addEstilo($('#comentario-usuario')[0], cssDefault);
+
+    if($('#comentario-text').val().length === 0)
+      addEstilo($('#comentario-text')[0], cssError);
+    else
+      addEstilo($('#comentario-text')[0], cssDefault);
+      console.log("iudjn");
+    return false;
+  }
+});
 })();//Fin

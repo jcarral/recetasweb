@@ -25,9 +25,9 @@ if(isset($_GET["id"])){
 }
 
 if (isset($_POST['submit'])) {
-  $autor = (isset($_POST['usuario'])&& strlen($_POST['usuario'])>0)?$_POST["usuario"]:"Anónimo";
-  $mail = (isset($_POST['mail'])&& strlen($_POST['mail'])>0)?$_POST["mail"]:" ";
-  $texto = $_POST['texto'];
+  $autor = (isset($_POST['usuario'])&& strlen($_POST['usuario'])>0)?htmlspecialchars($_POST["usuario"]):"Anónimo";
+  $mail = (isset($_POST['mail'])&& strlen($_POST['mail'])>0)?htmlspecialchars($_POST["mail"]):" ";
+  $texto = htmlspecialchars($_POST['texto']);
   $nuevocom = $actual->comentarios->addChild('comentario');
   $nuevocom->addChild('texto', $texto);
   $nuevocom->addChild('fecha', date('l jS \of F Y h:i:s A'));
@@ -106,18 +106,18 @@ if (isset($_POST['submit'])) {
         <div class="encabezado"><i class="icono icono-suggest"></i><p>Sugerencias</p></div>
         <div class="recomendaciones-sugerencias">
           <ul id="sugerencias">
-            
+
           </ul>
       </div>
       </section>
       <section class="comentarios caja">
         <div class="encabezado"><i class="icono icono-chat"></i><p>Comentarios</p></div>
-        <?php  echo "<form action='receta.php?id=" . $id . "' method='Post' class='comentarios-nuevo'>"?>
+        <?php  echo "<form action='receta.php?id=" . $id . "' method='Post' class='comentarios-nuevo' id='form-coment'>"?>
           <div data-comentarios="datos">
-            <input type="text" placeholder="Usuario" name="usuario">
+            <input type="text" placeholder="Usuario" name="usuario" id="comentario-usuario">
             <input type="email" placeholder="Correo electrónico" name="mail">
           </div>
-          <textarea rows="10" cols="50" placeholder="Introduce un nuevo comentario" name="texto"></textarea>
+          <textarea rows="10" cols="50" placeholder="Introduce un nuevo comentario" name="texto" id="comentario-text"></textarea>
           <input type="submit" data-texto="Enviar" class="button-hover" name="submit" placeholder="Enviar">
         </form>
         <ul>
@@ -126,9 +126,9 @@ if (isset($_POST['submit'])) {
             $comentario = "";
               foreach ($actual->comentarios->comentario as $value) {
                 $comentario .= "<li class='comentario'>";
-                $comentario .= "<p>" . $value->texto . "</p>";
+                $comentario .= "<p>" . htmlentities($value->texto) . "</p>";
                 $comentario .= "<span class='comentario-bottom'>";
-                $comentario .= $value->fecha . " @ ". $value->usuario . "</span></li>";
+                $comentario .= $value->fecha . " @ ". htmlentities($value->usuario) . "</span></li>";
               }
               echo $comentario;
 

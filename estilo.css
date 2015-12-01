@@ -907,8 +907,8 @@ input[type="text"].newIngrediente {
   border-radius: 3px;
   border: 1px solid #9ea2a3;
   position: relative;
-  top: 30%;
-  left: 25%;
+  top: 20vh;
+  left: 15vw;
 }
 .buscador-txt {
   width: 900px;
@@ -965,7 +965,7 @@ input[type="text"].newIngrediente {
 .buscador-live li >img {
   float: left;
   margin-right: 20px;
-  margin-top: 8px;
+  margin-top: -1px;
   -webkit-border-radius: 100%;
   border-radius: 100%;
 }
@@ -1148,6 +1148,6 @@ input[type="text"].newIngrediente {
   border-radius: 5px;
   width: 980px;
   position: absolute;
-  top: 25%;
-  left: 25%;
+  top: 20vh;
+  left: 15vw;
 }
