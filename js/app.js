@@ -56,6 +56,21 @@ $('#newIngrediente').keypress(function(e){
   }
 });
 
+//Validar ingredientes
+
+var validarIngredientes = function(){
+  return $('#lista-ingredientes li').length > 0;
+};
+// Validar elaboración
+var validarPreparacion = function(){
+  return $('#nueva-preparacion').val().length >100;
+};
+
+//Validar imagen
+var validarImagen = function(){
+  alert($('#newImg').val());
+  return($('#newImg').val().match(/\.(jpeg|jpg|gif|png)$/) !== null);
+};
 
 //Validar correo electronico
 var validarMail = function (email) {
@@ -81,7 +96,10 @@ $('#newCorreo').on("keydown blur", function(){
 
 //Validar el envio del formulario
 $('#formulario').on("submit", function(){
-  return mailInfo.valido && (!$('#newIngrediente').is(':focus') || !$('#newCantidadgr').is(':focus'));
+  return mailInfo.valido && (!$('#newIngrediente').is(':focus') || !$('#newCantidadgr').is(':focus'))
+          && validarIngredientes()
+          && validarPreparacion()
+          && validarImagen();
 });
 
 //Cierra el buscador
