@@ -1,7 +1,7 @@
 'use strict';
 (function(){
   var mailInfo = {
-    cssValid:{
+    cssValido:{
       'border': '2px solid rgb(25, 203, 91)',
       'color': 'rgb(25, 203, 91)',
       'font-weight': 'bold'
@@ -18,6 +18,10 @@
     },
     valido: false
   };
+  var imgValida = false, ingValidos = false, procValido = false;
+
+  var cssError = {'border': '2px solid red','background': 'rgba(247, 167, 177, 0.23)','color': 'red'};
+  var cssDefault = {'border': '1px solid black', 'background': 'white', 'color': 'black'};
 
   //Funcion para aplicar los estilos de la lista al objeto pasado como primer parametro
   var addEstilo = function(item, estilos){
@@ -59,17 +63,41 @@ $('#newIngrediente').keypress(function(e){
 //Validar ingredientes
 
 var validarIngredientes = function(){
-  return $('#lista-ingredientes li').length > 0;
+
+  if($('#lista-ingredientes li').length > 0){
+    addEstilo($('#newIngrediente')[0], cssDefault);
+    addEstilo($('#newCantidadgr')[0], cssDefault);
+    ingValidos = true;
+  }else{
+    addEstilo($('#newIngrediente')[0], cssError);
+    addEstilo($('#newCantidadgr')[0], cssError);
+    ingValidos = false;
+  }
 };
 // Validar elaboración
 var validarPreparacion = function(){
-  return $('#nueva-preparacion').val().length >100;
+
+  if($('#nueva-preparacion').val().length >100){
+    addEstilo($('#nueva-preparacion')[0], cssDefault);
+    procValido = true;
+  }else{
+    addEstilo($('#nueva-preparacion')[0], cssError);
+    procValido = false;
+
+  }
 };
 
 //Validar imagen
 var validarImagen = function(){
-  alert($('#newImg').val());
-  return($('#newImg').val().match(/\.(jpeg|jpg|gif|png)$/) !== null);
+
+  if($('#newImg').val().match(/\.(jpeg|jpg|gif|png)$/) !== null){
+    addEstilo($('#newImg')[0], cssDefault);
+    imgValida = true;
+  }else{
+    addEstilo($('#newImg')[0], cssError);
+    imgValida = false;
+  }
+
 };
 
 //Validar correo electronico
@@ -84,7 +112,7 @@ $('#newCorreo').on("keydown blur", function(){
     addEstilo(this, mailInfo.cssDefault);
   }else{
     if(validarMail($(this).val())){
-      addEstilo(this, mailInfo.cssValid);
+      addEstilo(this, mailInfo.cssValido);
       mailInfo.valido = true;
     }
     else{
@@ -95,11 +123,19 @@ $('#newCorreo').on("keydown blur", function(){
 });
 
 //Validar el envio del formulario
-$('#formulario').on("submit", function(){
-  return mailInfo.valido && (!$('#newIngrediente').is(':focus') || !$('#newCantidadgr').is(':focus'))
-          && validarIngredientes()
-          && validarPreparacion()
-          && validarImagen();
+$('#formulario').on("submit", function(e){
+
+  validarIngredientes();
+  validarImagen();
+  validarPreparacion();
+  if(!(procValido && imgValida && ingValidos && mailInfo.valido)
+      && ($('#newIngrediente').is(':focus') || !$('#newCantidadgr').is(':focus'))){
+    e.preventDefault();
+    alert("Por favor rellena todos los campos!");
+    return false;
+  }
+
+
 });
 
 //Cierra el buscador
@@ -216,9 +252,9 @@ $.get('./datos.xml', function(data){
   var last = first+4;
   var index = 0;
   xml_recetas.each(function(){
-    console.log("first: " + first + ", last: " + last + ", index: " + index);
+
     if(index>first){
-      console.log("entra");
+
       s_sugerencias += "<a href='./receta.php?id=" + $(this).attr('id') + "'><li>";
       s_sugerencias += "<img src='" + $(this).find('imagen').text() +"' alt='' height='150px' width='200px'/>";
       s_sugerencias += "</li></a>";
@@ -227,7 +263,7 @@ $.get('./datos.xml', function(data){
      return false;
     }
   index++;
-  console.log(first);
+
   });
   $('#sugerencias').html(s_sugerencias);
 });
@@ -237,9 +273,6 @@ $.get('./datos.xml', function(data){
 *==============================================================================*/
 
 $('#form-coment').on("submit", function(e){
-
-  var cssError = {'border': '2px solid red','background': 'rgba(247, 167, 177, 0.23)','color': 'red'};
-  var cssDefault = {'border': '1px solid black', 'background': 'white', 'color': 'black'};
 
   if($('#comentario-usuario').val().length === 0 || $('#comentario-text').val().length === 0){
     alert('Campos incorrectos');
@@ -253,7 +286,7 @@ $('#form-coment').on("submit", function(e){
       addEstilo($('#comentario-text')[0], cssError);
     else
       addEstilo($('#comentario-text')[0], cssDefault);
-      console.log("iudjn");
+
     return false;
   }
 });

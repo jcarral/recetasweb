@@ -147,7 +147,7 @@ if (isset($_POST['submit'])) {
         <input type="text" class="buscador-txt  buscador-nombre" name="buscador-autor" placeholder="Buscar la receta por nombre aquí...">
         <input type="text" class="buscador-txt buscador-titulo" name="buscador-titulo" placeholder="Buscar la receta por titulo aquí...">
         <select name="tipo" id="buscador-select" class="buscador-select">
-          <option value="Ingrediente">Ingredientes</option>
+          
           <option value="autor">Autor</option>
           <option value="titulo">Titulo</option>
         </select>
