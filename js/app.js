@@ -1,5 +1,7 @@
 'use strict';
 (function(){
+
+  //Variable con las propiedades del mail
   var mailInfo = {
     cssValido:{
       'border': '2px solid rgb(25, 203, 91)',
@@ -18,10 +20,12 @@
     },
     valido: false
   };
-  var imgValida = false, ingValidos = false, procValido = false;
+  //Variables que determinan si un campo del formulario es valido o no
+  var imgValido = false, ingsValido = false, procValido = false, tituloValido = false;
 
+  //Estilos para los campos de un formulario en función de si son validos o no
   var cssError = {'border': '2px solid red','background': 'rgba(247, 167, 177, 0.23)','color': 'red'};
-  var cssDefault = {'border': '1px solid black', 'background': 'white', 'color': 'black'};
+  var cssDefault = {'border': '1px solid #ddd', 'background': 'white', 'color': 'black'};
 
   //Funcion para aplicar los estilos de la lista al objeto pasado como primer parametro
   var addEstilo = function(item, estilos){
@@ -41,8 +45,11 @@ var addLista = function(){
   if($('#newCantidadgr').val().length === 0 || $('#newIngrediente').val().length === 0)
     alert('Introduce todos los campos');
   else{
-    var list = "<li class='ingrediente'>" + $('#newIngrediente').val()  + "     -" + $('#newCantidadgr').val()  +"gr "+ "<span class='delete'>X</span><input type='hidden' name='ingrediente[]' value='"+$('#newIngrediente').val() +"'</li>";
+    var gramos = "  -  " + $('#newCantidadgr').val() + "gr";
+    var list = "<li class='ingrediente'>" + $('#newIngrediente').val()  + "&nbsp&nbsp&nbsp" + gramos + "<span class='delete'>X</span><input type='hidden' name='ingrediente[]' value='" + $('#newIngrediente').val() + gramos +  "'</li>";
     $("#lista-ingredientes").append(list);
+    $('#newCantidadgr').val('');
+    $('#newIngrediente').val('');
     $("li.ingrediente:last-child>.delete").click(function() {
       $(this).parent().fadeOut(function(){
         $(this).remove();
@@ -51,8 +58,10 @@ var addLista = function(){
 }
 };
 
+//Evento para añadir ingredientes a la lista clickando sobre el label
 $(".label-newIngred").click(addLista);
 
+//Evento para añadir ingredientes presionando enter
 $('#newIngrediente').keypress(function(e){
   if(e.keyCode === 13){
     e.preventDefault();
@@ -60,6 +69,25 @@ $('#newIngrediente').keypress(function(e){
   }
 });
 
+$('#newCantidadgr').keypress(function(e){
+  if(e.keyCode === 13){
+    e.preventDefault();
+    addLista();
+  }
+});
+
+//ValidarTitulo
+var validarTitulo = function(){
+  var titulo = $('#newNombre');
+
+  if(titulo.val().length > 0){
+    addEstilo(titulo[0], cssDefault);
+    tituloValido = true;
+  }else{
+    addEstilo(titulo[0], cssError);
+    tituloValido = false;
+  }
+};
 //Validar ingredientes
 
 var validarIngredientes = function(){
@@ -67,11 +95,11 @@ var validarIngredientes = function(){
   if($('#lista-ingredientes li').length > 0){
     addEstilo($('#newIngrediente')[0], cssDefault);
     addEstilo($('#newCantidadgr')[0], cssDefault);
-    ingValidos = true;
+    ingsValido = true;
   }else{
     addEstilo($('#newIngrediente')[0], cssError);
     addEstilo($('#newCantidadgr')[0], cssError);
-    ingValidos = false;
+    ingsValido = false;
   }
 };
 // Validar elaboración
@@ -89,13 +117,13 @@ var validarPreparacion = function(){
 
 //Validar imagen
 var validarImagen = function(){
-
-  if($('#newImg').val().match(/\.(jpeg|jpg|gif|png)$/) !== null){
-    addEstilo($('#newImg')[0], cssDefault);
-    imgValida = true;
+  var img = $('#newImg');
+  if(img.val().match(/\.(jpeg|jpg|gif|png)$/) !== null || img.val().length == 0){
+    addEstilo(img[0], cssDefault);
+    imgValido = true;
   }else{
-    addEstilo($('#newImg')[0], cssError);
-    imgValida = false;
+    addEstilo(img[0], cssError);
+    imgValido = false;
   }
 
 };
@@ -106,21 +134,25 @@ var validarMail = function (email) {
     return regex.test(email);
 };
 
-//Comprobar si el correo es correcto y cambiar estilos del input
-$('#newCorreo').on("keydown blur", function(){
-  if($(this).val().length === 0){
-    addEstilo(this, mailInfo.cssDefault);
+var comprobarMail = function(){
+  var mail = $('#newCorreo');
+  if($(mail).val().length === 0){
+    addEstilo(mail[0], mailInfo.cssDefault);
+    mailInfo.valido = true;
   }else{
-    if(validarMail($(this).val())){
-      addEstilo(this, mailInfo.cssValido);
+    if(validarMail($(mail).val())){
+      addEstilo(mail[0], mailInfo.cssValido);
       mailInfo.valido = true;
     }
     else{
-      addEstilo(this, mailInfo.cssError);
+      addEstilo(mail[0], mailInfo.cssError);
       mailInfo.valido = false;
     }
   }
-});
+};
+//Comprobar si el correo es correcto y cambiar estilos del input
+$('#newCorreo').on("keydown blur", comprobarMail);
+$('#formulario').on('keydown', comprobarMail);
 
 //Validar el envio del formulario
 $('#formulario').on("submit", function(e){
@@ -128,7 +160,8 @@ $('#formulario').on("submit", function(e){
   validarIngredientes();
   validarImagen();
   validarPreparacion();
-  if(!(procValido && imgValida && ingValidos && mailInfo.valido)
+  validarTitulo();
+  if(!(procValido && imgValido && mailInfo.valido && ingsValido && tituloValido)
       && ($('#newIngrediente').is(':focus') || !$('#newCantidadgr').is(':focus'))){
     e.preventDefault();
     alert("Por favor rellena todos los campos!");
@@ -138,13 +171,13 @@ $('#formulario').on("submit", function(e){
 
 });
 
-//Cierra el buscador
+//Cierra el formulario clickando fuera de él
   $('.modal-nueva').on("click", function(e){
     if(e.target != this) return;
     $(this).css('display', 'none');
   });
 
-
+//Abre el formulario al presionar el boton
   $('#btn-nueva').on("click", function(){
     $('.modal-nueva').css('display', 'block');
   });
@@ -154,20 +187,17 @@ $('#formulario').on("submit", function(e){
 
 var select = $('#buscador-select');
 
-
 //Cambia el valor del placeholder del buscador
 select.on("change", function(){
   $('.buscador-titulo').attr('placeholder', 'Buscar la receta por ' + this.value + ' aquí...').blur();
 });
 
-
-
-//Cierra el buscador
+//Cierra el buscador al clickar fuera
   $('.buscador').on("click", function(e){
     if(e.target != this) return;
     $(this).css('display', 'none');
   });
-
+//Cierra el buscador al clickar sobre la X
   $('.buscador-close').on("click", function(){
     $('.buscador').css('display', 'none');
   });
@@ -175,8 +205,6 @@ select.on("change", function(){
 $('#btn-buscador').on("click", function(){
   $('.buscador').css('display', 'block');
 });
-
-
 
 //AJAX
 
@@ -229,22 +257,28 @@ var cargarUltimas = function(){
 
 cargarUltimas();
 
+//Vuelve a la "pagina" anterior
 $('#prev').click(function(){
   if(index_recetas_pp>=RECETAS_PP){
     index_recetas_pp -= RECETAS_PP;
     cargarUltimas();
   }
 });
-
+//Avanza a la siguiente
 $('#next').click(function(){
-  index_recetas_pp += RECETAS_PP;
-  cargarUltimas();
+  if(index_recetas_pp+RECETAS_PP<num_recetas){
+    index_recetas_pp += RECETAS_PP;
+    cargarUltimas();
+  }
 });
 
 
 /*==============================================================================
 *========================  SUGERENCIAS ============================================
 *==============================================================================*/
+/**
+* Carga en la parte de sugerencias 4 recetas al azar
+*/
 $.get('./datos.xml', function(data){
   var xml_recetas = $(data).find('recetas').find('receta');
   var s_sugerencias = "";
@@ -256,7 +290,7 @@ $.get('./datos.xml', function(data){
     if(index>first){
 
       s_sugerencias += "<a href='./receta.php?id=" + $(this).attr('id') + "'><li>";
-      s_sugerencias += "<img src='" + $(this).find('imagen').text() +"' alt='' height='150px' width='200px'/>";
+      s_sugerencias += "<img src='" + $(this).find('imagen').text() +"' alt='" + $(this).find('titulo').text() + "' height='150px' width='200px'/>";
       s_sugerencias += "</li></a>";
     }
     if(index>=last){
@@ -272,6 +306,8 @@ $.get('./datos.xml', function(data){
 *========================  COMENTARIOS ============================================
 *==============================================================================*/
 
+//Gestiona y valida el envio de comentarios para que no tenga el campo de usuario y
+//de texto vacios
 $('#form-coment').on("submit", function(e){
 
   if($('#comentario-usuario').val().length === 0 || $('#comentario-text').val().length === 0){
