@@ -129,7 +129,7 @@ main
       margin 0 0 10px 54px
       color gray
       width 100%
-      text-align center
+      text-align left
     &-info
       width 980px
       height 200px
@@ -207,7 +207,7 @@ main
           max-height 300px
           border-radius 3px
           float left
-          margin 0 10px 0 0
+          margin 0 10px 10px 0
         p
           display inline
 .recomendaciones
@@ -704,7 +704,12 @@ input[type="text"].newIngrediente
     font-size 24px
     font-weight bold
     text-align center
-    line-height 200px
+    display flex
+    align-items center
+    justify-content center
+    p
+      display inline
+
   &:hover .contenedor-up
     position absolute
     bottom 0

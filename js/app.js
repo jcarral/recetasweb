@@ -245,7 +245,7 @@ var cargarUltimas = function(){
       if(i>=index_recetas_pp){
       s_recetas += "<a href='./receta.php?id=" + $(this).attr('id') + "' class='contenedor'>";
       s_recetas += "<img src='" + $(this).find('imagen').text() + "' height='200px' width='200px' alt=''>";
-      s_recetas += "<div class='contenedor-up'>"+ $(this).find('titulo').text()+"</div></a>";
+      s_recetas += "<div class='contenedor-up'><p>"+ $(this).find('titulo').text()+"</p></div></a>";
     }
     if(i>=index_recetas_pp + RECETAS_PP-1)
       return false;
