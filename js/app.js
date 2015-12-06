@@ -290,7 +290,7 @@ $.get('./datos.xml', function(data){
     if(index>first){
 
       s_sugerencias += "<a href='./receta.php?id=" + $(this).attr('id') + "'><li>";
-      s_sugerencias += "<img src='" + $(this).find('imagen').text() +"' alt='" + $(this).find('titulo').text() + "' height='150px' width='200px'/>";
+      s_sugerencias += "<img src='" + $(this).find('imagen').text() +"' alt='' title='" + $(this).find('titulo').text() + "' height='150px' width='200px'/>";
       s_sugerencias += "</li></a>";
     }
     if(index>=last){

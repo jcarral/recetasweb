@@ -7,6 +7,14 @@ vendor-prefixes ?= webkit moz official
 
 //Variables
 cVerde1 = rgb(42, 196, 118);
+cVerde2 = rgb(37, 177, 106);
+cVerdeHover = rgb(20, 205, 144);
+cNaranja1 = #f39c12;
+cBack1 = #e7e7e7;
+cNav1 = #383838;
+cFooter1 = rgba(#e0ac37, 0.55);
+shadow-nueva = 1px 2px 5px rgba(0,0,0,.09);
+
 *
   font-family 'Lato', 'Open Sans',"helvetica neue",sans-serif
 
@@ -24,19 +32,19 @@ body
   flex-direction column
   height 100%
   align-items center
-  background #e7e7e7
+  background cBack1
 
 header
   width 100%
   height 70px
-  background #f39c12
+  background cNaranja1
   display flex
   justify-content center
 
 nav
   width 100%
   height 30px
-  background #383838
+  background cNav1
   margin-bottom 10px
   display flex
   justify-content center
@@ -55,7 +63,7 @@ nav
     margin-right 10px
     transition ease 0.5s all
     &:hover
-      color rgb(20, 205, 144)
+      color cVerdeHover
 
 .top
   width 980px
@@ -80,7 +88,7 @@ nav
   letter-spacing .08em
   padding 5px
   margin-left 10px
-  background rgb(37, 157, 110)
+  background cVerde2
   text-decoration none
   text-shadow 0 1px 3px rgba(0, 0, 0, 0.35)
   letter-spacing .08em
@@ -93,7 +101,7 @@ nav
   position relative
 
 .button:hover,[class*="button-"]:hover
-  background #078256
+  background cVerdeHover
   box-shadow 0 0 3px rgba(0, 0, 0, 0.5) inset
 
 .button-hover
@@ -120,6 +128,8 @@ main
       padding 0
       margin 0 0 10px 54px
       color gray
+      width 100%
+      text-align center
     &-info
       width 980px
       height 200px
@@ -139,7 +149,6 @@ main
         p
           font-size 24px
           font-weight bold
-          margin 0px 0 0 -20px
           width 200px
         &:before
           content "\00a0\00a0\00a0\00a0"
@@ -292,7 +301,7 @@ main
 footer
   width 100%
   height 40px
-  background rgba(#e0ac37, 0.55)
+  background cFooter1
   display flex
   align-self center
   justify-content center
@@ -377,7 +386,7 @@ input
   flex-direction column
   align-items center
   input
-    box-shadow 1px 2px 5px rgba(0,0,0,.09)
+    box-shadow shadow-nueva
     border-radius 2px 4px 4px 2px
     border 1px solid rgba(0, 0, 0, 0.07)
     height 10px
@@ -388,12 +397,12 @@ input
     text-shadow 0 1px 0 rgba(255, 255, 255, 0.4)
     margin-top -10px
     padding-bottom 3px
-    border-bottom 2px solid #15cc74
+    border-bottom 2px solid cVerde1
     &:before
       content "+"
       padding 5px 10px
       margin-left -10px
-      background #15cc74
+      background cVerde1
   &-nombre#newNombre
     width 900px
     font-size 16px
@@ -413,7 +422,7 @@ input
     position relative
     margin-bottom 15px
     &:before
-      background #16ac68
+      background cVerde1
       content ''
       position absolute
       top 2px
@@ -437,7 +446,7 @@ input
   &-ingredientes
     width 100%
     margin 0 10px
-    border-top 1px solid #ddd
+
     ul>li
       display flex
       justify-content space-between
@@ -449,7 +458,7 @@ input
       padding-bottom 2px
       &:before
         background cVerde1
-        border 1px solid rgb(37, 177, 106)
+        border 1px solid cVerde2
         color black
         height 34px
         font-size 12px
@@ -480,17 +489,18 @@ label[for="newNombre"]
   background url('./images/nombreReceta.png') no-repeat cVerde1
   background-position center
   background-size 32px 32px
-  border 1px solid rgb(37, 177, 106)
+  border 1px solid cVerde2
   border-right none
 label[data-tam="mediano"]
   width 30px
   height 30px
-  border 1px solid rgb(37, 177, 106)
+  border 1px solid cVerde2
   border-right none
   background-position center
   background-size 24px 24px
 .label
   margin-right -3px
+  box-shadow shadow-nueva
   &-newCorreo
     background url('./images/mailic.png') no-repeat cVerde1
   &-newUser
@@ -507,7 +517,7 @@ label[data-tam="mediano"]
     background url('./images/persic.png') no-repeat cVerde1
   &-newIngred
     background cVerde1
-    border 1px solid rgb(37, 177, 106)
+    border 1px solid cVerde2
     border-right none
     width 40px
     height 40px
@@ -519,13 +529,15 @@ label[data-tam="mediano"]
 .delete
   cursor pointer
 input[type="number"]
-  line-height 12px
+  line-height 30px
+  padding 0 0 0 5px
+  height 30px
 .newIngrediente + input[type="number"]
   margin-left -12px
   height 20px
   padding 10px
   line-height 20px
-  width 40px
+  width 70px
 .newDescripcion
   width 400px
 input[type="text"].newIngrediente
@@ -565,8 +577,7 @@ input[type="text"].newIngrediente
     border-radius 3px
     border 1px solid rgb(158, 162, 163)
     position relative
-    top 20vh
-    left 15vw
+    margin 5% auto
   &-txt
     width 900px
     height 50px
@@ -576,7 +587,6 @@ input[type="text"].newIngrediente
   &-titulo
     top 0
     left 0
-  //  display none
   &-nombre
     top 0
     left 0
@@ -651,7 +661,7 @@ input[type="text"].newIngrediente
     justify-content center
     align-items center
     height 50px
-    width 100%
+    margin 0 20px
     border-top 5px solid cVerde1
     button
       margin 0 10px
@@ -715,6 +725,4 @@ input[type="text"].newIngrediente
     border none
     border-radius 5px
     width 980px
-    position absolute
-    top 20vh
-    left 15vw
+    margin 5% auto

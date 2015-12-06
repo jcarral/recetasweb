@@ -144,16 +144,18 @@ if (isset($_POST['submit'])) {
       <form action="" class="buscador-formulario">
         <span class="buscador-close">X</span>
 
-        <input type="text" class="buscador-txt  buscador-nombre" name="buscador-autor" placeholder="Buscar la receta por nombre aquí...">
-        <input type="text" class="buscador-txt buscador-titulo" name="buscador-titulo" placeholder="Buscar la receta por titulo aquí...">
+        <input type="search" class="buscador-txt buscador-titulo" id="campo-buscador" name="buscador-titulo" placeholder="Buscar la receta por titulo aquí...">
         <select name="tipo" id="buscador-select" class="buscador-select">
-          
-          <option value="autor">Autor</option>
           <option value="titulo">Titulo</option>
+          <option value="autor">Autor</option>
+
+
         </select>
+        <div id="actualizar"></div>
       </form>
     </section>
-    <!-- NUEVA RECETA MODAL -->
+
+    <!-- MODAL -->
     <main class="modal-nueva">
       <form action="print.php" method="post" class="caja nueva" id="formulario">
         <h1 class="nueva-titulo"> Añade una nueva receta</h1>
@@ -182,7 +184,7 @@ if (isset($_POST['submit'])) {
               <label for="radioFour" class="radio">Bebida</label>
       </div>
 
-    <div class="receta-ingredientes nueva-ingredientes">
+      <div class="receta-ingredientes nueva-ingredientes">
       <ul id="lista-ingredientes">
 
       </ul>
@@ -192,9 +194,9 @@ if (isset($_POST['submit'])) {
         <input type="text" placeholder="Introduce un nuevo ingrediente" id="newIngrediente" class="newIngrediente">
         <input type="number" placeholder="gr" class="newCantidad" id="newCantidadgr">
       </div>
-    </div>
+      </div>
 
-    <div class="row">
+      <div class="row">
       <label for="newTiempo" data-tam="mediano" class="label label-newTiempo"></label>
       <input type="number" id="newTiempo" name="tiempo" placeholder="Tiempo medio">
       <label for="newCal" data-tam="mediano" class="label label-newCal"></label>
@@ -203,15 +205,16 @@ if (isset($_POST['submit'])) {
       <input type="number" id="newPersonas" name="personas" placeholder="Numero de personas">
       <label for="newPersonas" data-tam="mediano" class="label label-newImg"></label>
       <input type="url" id="newImg" name="img" placeholder="url de la imagen">
-    </div>
-    <div class="nueva-preparacion">
+      </div>
+      <div class="nueva-preparacion">
       <div class="nueva-preparacion-titulo">Preparacion de la receta</div>
-      <textarea name="nueva-preparacion-pasos" id="" cols="30" rows="10" placeholder="Introduce aquí los pasos a seguir"></textarea>
-    </div>
+      <textarea name="nueva-preparacion-pasos" id="nueva-preparacion" cols="30" rows="10" placeholder="Introduce aquí los pasos a seguir"></textarea>
+      </div>
 
-    <input type="submit" name="submit" data-texto="Enviar" class="button-hover nuevaEnviar" placeholder="Enviar" >
+      <input type="submit" id="submit" name="submit" data-texto="Enviar" class="button-hover nuevaEnviar" placeholder="Enviar" >
       </form>
     </main>
+
     <footer>
       SAR 2015-2016
     </footer>
@@ -219,5 +222,5 @@ if (isset($_POST['submit'])) {
 
     <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
-  </body>
-</html>
+    </body>
+    </html>
