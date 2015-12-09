@@ -216,11 +216,11 @@ $('.buscador-titulo').keyup(function(){
     var out = '<ul class="buscador-live">';
     $(data).find('recetas').find('receta').each(function(i){
       if($(this).find(document.getElementById('buscador-select').value).text().search(miRegEx) != -1){
-        out += '<li>';
+        out += '<a href="./receta.php?id=' + $(this).attr('id') + '"><li>';
         out += '<img src="'+ $(this).find('imagen').text() +'" alt="" width="30px" height="30px">';
         out += '<h3>' + $(this).find('titulo').text() + '</h3>';
         out += '<p>' + $(this).find('descripcion').text() + '</p>';
-        out += '</li>';
+        out += '</li></a>';
       }
     });
     out += '</ul>';
